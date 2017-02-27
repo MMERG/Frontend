@@ -60,6 +60,14 @@
 
       </div>
 
+      <button (click)="showDialog = !showDialog" class="btn">Skaičiuoti</button>
+
+      <app-dialog [(visible)]="showDialog">
+        <h1>Hello World</h1>
+        <button (click)="showDialog = !showDialog" class="btn">Close</button>
+      </app-dialog>
+
+
     </div>
 
 

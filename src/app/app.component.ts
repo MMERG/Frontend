@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   categories: any;
   error: any;
   customers: any;
+  showDialog = false;
 
   constructor(private formService: FormService) {
   }
