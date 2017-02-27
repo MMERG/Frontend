@@ -1,7 +1,8 @@
 {
+
   "project": {
     "version": "1.0.0-beta.28.3",
-    "name": "swed-front"
+    "name": "merge-projekt-front"
   },
   "apps": [
     {
@@ -18,7 +19,8 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "swed-theme.scss"
       ],
       "scripts": [],
       "environments": {

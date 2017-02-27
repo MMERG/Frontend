@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+.spacerRight{
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.spanCentered {
+  font-size: 22px;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-slider-horizontal {
+  width:40%;
+}
+
+.label {
+  font-weight:bold;
+  margin:1.5em 0;
+  /*display:block;*/
+}
+
+.page-padding {
+  padding: 3% 1.5em 1.5em 1.5em;
+}
+
+.checbox {
+
+  width: 30px;
+  height: 30px;
+}
+
+.narrowToolbar {
+
+  height: 3%;
+  width: 100%;
+  position: absolute;
+  background-color: darkorange;
+}
+
+.topToolbar {
+  padding-top: 2%;
+}
+.digits {
+  color:#d33d00;
+  display: inline-block;
+  text-align: start;
+  position: relative;
+  width: 4%;
+  border-radius: 3px;
+  border: 1px solid #c6c6c6;
+}
+
+.inputFormStyle {
+  color: gray;
+}
+
+/*.sliderWrapper {*/
+  /*float: left;*/
+  /*width: 259px;*/
+  /*height: 16px;*/
+  /*margin: 2px 17px 0 0;*/
+  /*background: url('images/bg.spreadsheets_consumer_slider.png') no-repeat 0 0;*/
+/*}*/

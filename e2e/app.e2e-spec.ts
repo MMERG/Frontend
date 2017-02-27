@@ -1,10 +1,10 @@
-import { SwedFrontPage } from './app.po';
+import { MergeProjektFrontPage } from './app.po';
 
-describe('swed-front App', function() {
-  let page: SwedFrontPage;
+describe('merge-projekt-front App', function() {
+  let page: MergeProjektFrontPage;
 
   beforeEach(() => {
-    page = new SwedFrontPage();
+    page = new MergeProjektFrontPage();
   });
 
   it('should display message saying app works', () => {

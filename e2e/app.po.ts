@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class SwedFrontPage {
+export class MergeProjektFrontPage {
   navigateTo() {
     return browser.get('/');
   }
