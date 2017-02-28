@@ -1,7 +1,8 @@
 {
   "project": {
-    "version": "1.0.0-beta.28.3",
-    "name": "merge-projekt-front"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": "1.0.0-rc.0",
+    "name": "loaning-client"
   },
   "apps": [
     {
@@ -22,8 +23,8 @@
         "swed-theme.scss"
       ],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
