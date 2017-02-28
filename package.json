@@ -28,7 +28,7 @@
     "md-dialog": "0.0.1-alpha.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
     "@angular/cli": "^1.0.0-rc.0",
     "@angular/compiler-cli": "^2.3.1",
     "@types/hammerjs": "^2.0.34",

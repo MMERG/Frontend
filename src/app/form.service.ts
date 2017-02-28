@@ -14,7 +14,7 @@ export class FormService  {
   }
 
   getCustomers():Promise<any>{
-    return this.http.get("http://localhost:8080/customers")
+    return this.http.get("https://loaning-api.herokuapp.com/customers")
       .toPromise()
       .then(response=>response.json())
       .catch(this.handleError);
@@ -36,7 +36,7 @@ export class FormService  {
                  loanTerm:number,
                  loanInterestPayDay: number): Promise<any> {
     return this.http
-      .post("http://localhost:8080/customer/add", JSON.stringify({
+      .post("https://loaning-api.herokuapp.com/customer/add", JSON.stringify({
         firstName: firstName,
         lastName: lastName,
         phoneNumber1: phoneNumber1,
@@ -73,7 +73,7 @@ export class FormService  {
                  loanTerm:number,
                  loanInterestPayDay: number): Promise<any> {
     return this.http
-      .post("http://localhost:8080/customerDraft/add", JSON.stringify({
+      .post("https://loaning-api.herokuapp.com/customerDraft/add", JSON.stringify({
         firstName: firstName,
         lastName: lastName,
         phoneNumber1: phoneNumber1,
