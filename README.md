@@ -1,9 +1,12 @@
-# Frontend
+# Loaning Client
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Troubleshooting: If after running `ng serve` you got interesting errors, you may need to `npm uninstall --save-dev angular-cli && npm install --save-dev @angular/cli@latest`.
+
+## Production server
+Navigate to `https://loaning-client.herokuapp.com/`.
 
 ## Code scaffolding
 
