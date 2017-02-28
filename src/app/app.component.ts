@@ -11,6 +11,9 @@ export class AppComponent implements OnInit {
   error: any;
   customers: any;
   showDialog = false;
+  isValid = false;
+  result1 = 0;
+  result2 = 0;
 
   constructor(private formService: FormService) {
   }
@@ -28,10 +31,8 @@ export class AppComponent implements OnInit {
           monthlySalary: number,
           email: string,
           loanAmount: number,
-          loanTerm:number,
-          loanInterestPayDay:number
-
-  ): void {
+          loanTerm: number,
+          loanInterestPayDay: number): void {
     firstName = firstName.trim();
     lastName = lastName.trim();
     phoneNumber1 = phoneNumber1.valueOf();
@@ -44,10 +45,12 @@ export class AppComponent implements OnInit {
     address = address.trim();
     monthlySalary = monthlySalary.valueOf();
     email = email.trim();
-    loanAmount=loanAmount.valueOf();
-    loanTerm=loanTerm.valueOf();
-    loanInterestPayDay=loanInterestPayDay.valueOf();
-    if (!firstName) {return;}
+    loanAmount = loanAmount.valueOf();
+    loanTerm = loanTerm.valueOf();
+    loanInterestPayDay = loanInterestPayDay.valueOf();
+    if (!firstName) {
+      return;
+    }
     this.formService.createCustomer(
       firstName,
       lastName,
@@ -65,28 +68,26 @@ export class AppComponent implements OnInit {
       loanTerm,
       loanInterestPayDay)
       .then(customer => {
-      this.customers.push(customer)
-    })
+        this.customers.push(customer)
+      })
   }
 
 
   addDraft(firstName: string,
-          lastName: string,
-          phoneNumber1: number,
-          phoneNumber2: number,
-          personalCode: number,
-          docType: string,
-          docNumber: number,
-          country: string,
-          city: string,
-          address: string,
-          monthlySalary: number,
-          email: string,
-          loanAmount: number,
-          loanTerm:number,
-          loanInterestPayDay:number
-
-  ): void {
+           lastName: string,
+           phoneNumber1: number,
+           phoneNumber2: number,
+           personalCode: number,
+           docType: string,
+           docNumber: number,
+           country: string,
+           city: string,
+           address: string,
+           monthlySalary: number,
+           email: string,
+           loanAmount: number,
+           loanTerm: number,
+           loanInterestPayDay: number): void {
     firstName = firstName.trim();
     lastName = lastName.trim();
     phoneNumber1 = phoneNumber1.valueOf();
@@ -99,10 +100,12 @@ export class AppComponent implements OnInit {
     address = address.trim();
     monthlySalary = monthlySalary.valueOf();
     email = email.trim();
-    loanAmount=loanAmount.valueOf();
-    loanTerm=loanTerm.valueOf();
-    loanInterestPayDay=loanInterestPayDay.valueOf();
-    if (!firstName) {return;}
+    loanAmount = loanAmount.valueOf();
+    loanTerm = loanTerm.valueOf();
+    loanInterestPayDay = loanInterestPayDay.valueOf();
+    if (!firstName) {
+      return;
+    }
     this.formService.createCustomerDraft(
       firstName,
       lastName,
@@ -125,19 +128,27 @@ export class AppComponent implements OnInit {
   }
 
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.getCustomers();
   }
-  getCustomers(){
+
+  getCustomers() {
     this.formService.getCustomers()
-      .then(customers=>{
-        this.customers=customers;
+      .then(customers => {
+        this.customers = customers;
         console.log('success');
-      }).catch(error=>{
-        this.error=error;
-        console.log('error');
+      }).catch(error => {
+      this.error = error;
+      console.log('error');
     })
   }
 
+  count(income: number, loan: number) {
+
+    this.isValid = true;
+
+    return income + loan;
+
+  }
 
 }

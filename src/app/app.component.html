@@ -4,12 +4,7 @@
 
 <md-tab-group class="topToolbar">
 
-  <md-tab label="Home">
 
-
-
-
-  </md-tab>
 
   <md-tab label="Paskolos skaičiuoklė">
 
@@ -33,7 +28,7 @@
 
           <input type="radio" name="alone" [(ngModel)]="ifAlone" checked> Vienas
 
-          <input type="radio" name="alone" value="true" [(ngModel)]="ifAlone"> Su sutuoktiniu(bendraskoliu)
+          <input type="radio" name="alone" value="true" [(ngModel)]="ifAlone">Su sutuoktiniu (bendraskoliu)
 
         </div>
 
@@ -50,12 +45,29 @@
 
       </div>
 
+      <button type="submit" (click)="count(income, loan)"></button>
+
+
+
+      <div *ngIf="isValid">
+
+        <label>{{this.result1}}</label>
+
+
+      </div>
+
+
+
+
+
+
+
       <div *ngIf="ifAlone">
         <label style="color: gray">Sutoktinio (bendramokslio) grynosios mėnesio pajamos</label>
-        <md-slider [(ngModel)]="income2" class="md-slider-horizontal" showTicks="true" max="20000" min="500" step="1"
-                   thumbLabel="true" value="500"></md-slider>
+        <md-slider [(ngModel)]="income2" class="md-slider-horizontal" showTicks="true" max="20000" min="245" step="1"
+                   thumbLabel="true" value="0"></md-slider>
         <input [(ngModel)]="income2" class="digits">
-        <span class="unit" style="color: gray">Eur</span>
+        <span class="unit" style="color: gray">Eur/mėn.</span>
 
 
       </div>
@@ -72,7 +84,7 @@
 
 
   </md-tab>
-  <md-tab label="Paraiškos pildymas">
+  <md-tab label="Vartojimo paskolos skaičiuoklė">
 
     <div class="page-padding" align="center">
       <div>
@@ -80,88 +92,105 @@
           <span class="spanCentered">Paraiškos pildymas</span>
         </md-toolbar>
 
-        <form>
+        <div>
+
+          <div >
+          <div class="form-group">
+            <md-input-container>
+              <!--<label class="inputFormStyle">Loan Amount *</label>-->
+              <input type="number" mdInput placeholder="Paskolos suma*" class="form-control" #loanAmount required>
+
+            </md-input-container>
+            <span class="unit">Eur</span>
+          </div>
+          </div>
+          <div class="form-group">
+
+            <span >Paskolos terminas*:</span>
+
+            <md-input-container>
+            <input type="number" mdInput placeholder="Metai" class="form-control" #loanTermY required>
+            </md-input-container>
+
+            <md-input-container>
+              <input type="number" mdInput placeholder="Mėnesis*" class="form-control" #loanTermM required>
+            </md-input-container>
+          </div>
+          <div class="form-group" >
+            <md-input-container>
+              <input type="number" mdInput placeholder="Paskolos ir palūkanų mokėjimo diena*" class="form-control" #loanInterestPayDay required>
+            </md-input-container>
+          </div>
+
+          <div class="form-group" style="padding-top: 3%">
+            <md-input-container>
+            <input type="text" mdInput placeholder="Vardas*" class="form-control" #firstName required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+            <input type="text" mdInput placeholder="Pavardė" class="form-control" #lastName required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Asmens kodas" class="form-control" #personalCode required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Dokumento tipas" class="form-control" #docType required>
+            </md-input-container>
+          </div>
+          <div class="form-group" style="padding-bottom: 3%">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Dokumento numeris" class="form-control" #docNumber required>
+            </md-input-container>
+          </div>
+
+          <span class="spacerRight" style="font-weight: 300">Kontaktiniai duomenys: </span>
 
           <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Loan Amount" class="form-control" #loanAmount required>
+              <input type="text" mdInput placeholder="Šalis*" class="form-control" #country required>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Loan Term" class="form-control" #loanTerm required>
+              <input type="text" mdInput placeholder="Miestas*" class="form-control" #city required>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Loan Pay Day" class="form-control" #loanInterestPayDay required>
+              <input type="text" mdInput placeholder="Adresas*" class="form-control" #adress required>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-            <input type="text" mdInput placeholder="First Name" class="form-control" #firstName required>
+              <input type="number" mdInput placeholder="Telefono numeris 1" class="form-control" #phoneNumber1 required>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-            <input type="text" mdInput placeholder="Last Name" class="form-control" #lastName required>
+              <input type="number" mdInput placeholder="Telefono numeris 2" class="form-control" #phoneNumber2 >
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-          <input type="number" mdInput placeholder="Phone Number" class="form-control" #phoneNumber1 required>
+              <input type="text" mdInput placeholder="El. paštas" class="form-control" #email >
             </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Mėnesinis atlyginimas atskaičius mokesčius" class="form-control" #monthlySalary required>
+            </md-input-container>
+            <span class="unit">Eur</span>
+          </div>
+
+          <button md-raised-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm=loanTermM.value + (loanTermY.value*12),loanInterestPayDay.value)">Save Form</button>
+          <button md-button style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm=loanTermM.value + (loanTermY.value*12),loanInterestPayDay.value)">Submit</button>
+
         </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="number" mdInput placeholder="Phone Number" class="form-control" #phoneNumber2 >
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="number" mdInput placeholder="Personal Code" class="form-control" #personalCode required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="Document Type" class="form-control" #docType required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="number" mdInput placeholder="Document Number" class="form-control" #docNumber required>
-            </md-input-container>
-          </div>
-          <span class="spacerRight">Contacts: </span>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="Country" class="form-control" #country required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="City" class="form-control" #city required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="Address" class="form-control" #adress required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="number" mdInput placeholder="Monthly Salary (€)" class="form-control" #monthlySalary required>
-            </md-input-container>
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="Email" class="form-control" #email >
-            </md-input-container>
-          </div>
-          <button md-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm.value,loanInterestPayDay.value)">Save Form</button>
-          <button md-button type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm.value,loanInterestPayDay.value)">Submit</button>
-
-        </form>
 
 
 
@@ -287,6 +316,16 @@
 
 
   </md-tab>
+
+  <md-tab label="Paskolos būklė">
+
+
+
+
+  </md-tab>
+
+
+
 </md-tab-group>
 
 

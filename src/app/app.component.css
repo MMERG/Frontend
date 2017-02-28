@@ -1,0 +1,10 @@
+md-input-container.md-default-theme label,
+md-input-container.md-default-theme .md-placeholder{
+  color:grey !important;
+  padding-left: 5px;
+
+}
+
+.formLeft{
+  float: left;
+}
