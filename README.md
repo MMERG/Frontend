@@ -1,9 +1,10 @@
-# MergeProjektFront
+# Loaning Client
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To load modules in NodeJS, install SystemJS with `npm install systemjs`. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

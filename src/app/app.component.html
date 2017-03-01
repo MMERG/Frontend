@@ -9,48 +9,68 @@
   </md-tab>
 
   <md-tab label="Paskolos skaičiuoklė">
-
-
     <div class="page-padding" align="center">
       <div>
         <md-toolbar color="primary" layout-align="center center">
           <span class="spanCentered">Vartojimo paskolos skaičiuoklė</span>
         </md-toolbar>
-
         <h2 style="color:sienna">Informacija apie jūsų pageidaujamą paskolą</h2>
         <label style="color: gray">Pageidaujama paskolos suma</label>
-
-        <md-slider [(ngModel)]="loan" class="md-slider-horizontal" showTicks="true" max="20000" min="500" step="1"
-                   thumbLabel="true" value="500"></md-slider>
+        <md-slider [(ngModel)]="loan"
+                   class="md-slider-horizontal"
+                   showTicks="true"
+                   max="20000"
+                   min="500"
+                   step="1"
+                   thumbLabel="true"
+                   value="500">
+        </md-slider>
         <input [(ngModel)]="loan" class="digits">
         <span class="unit" style="color: gray">Eur</span>
-
         <div align="center">
           <label style="color:sienna">Paskolą imsiu</label>
-
-          <input type="radio" name="alone" [(ngModel)]="ifAlone" checked> Vienas
-
-          <input type="radio" name="alone" value="true" [(ngModel)]="ifAlone"> Su sutuoktiniu(bendraskoliu)
-
+          <input type="radio"
+                 name="alone"
+                 [(ngModel)]="ifAlone"
+                 checked> Vienas
+          <input type="radio"
+                 name="alone"
+                 value="true"
+                 [(ngModel)]="ifAlone"> Su sutuoktiniu(bendraskoliu)
         </div>
-
       </div>
 
       <div>
         <h2 style="color:sienna">Informacija apie jūsų pajamas</h2>
         <label style="color: gray">Jūsų grynosios mėnesio pajamos</label>
-        <md-slider [(ngModel)]="income" class="md-slider-horizontal" showTicks="true" max="20000" min="245" step="1"
-                   thumbLabel="true" value="245"></md-slider>
-
-        <input [(ngModel)]="income" class="digits" value="245" type="text" id="income">
+        <md-slider [(ngModel)]="income"
+                   class="md-slider-horizontal"
+                   showTicks="true"
+                   max="20000"
+                   min="245"
+                   step="1"
+                   thumbLabel="true"
+                   value="245">
+        </md-slider>
+        <input [(ngModel)]="income"
+               class="digits"
+               value="245"
+               type="text"
+               id="income">
         <span class="unit" style="color: gray">Eur/mėn.</span>
-
       </div>
 
       <div *ngIf="ifAlone">
         <label style="color: gray">Sutoktinio (bendramokslio) grynosios mėnesio pajamos</label>
-        <md-slider [(ngModel)]="income2" class="md-slider-horizontal" showTicks="true" max="20000" min="500" step="1"
-                   thumbLabel="true" value="500"></md-slider>
+        <md-slider [(ngModel)]="income2"
+                   class="md-slider-horizontal"
+                   showTicks="true"
+                   max="20000"
+                   min="500"
+                   step="1"
+                   thumbLabel="true"
+                   value="500">
+        </md-slider>
         <input [(ngModel)]="income2" class="digits">
         <span class="unit" style="color: gray">Eur</span>
 
@@ -151,433 +171,16 @@
           </div>
           <span class="spacerRight">Contacts: </span>
           <div class="form-group">
-            <!--<md-input-container>-->
             <input type="text" mdInput placeholder="Country" class="form-control" #country required>
             <span>Country*</span>
-              <md-select>
-                  <md-option value="AF">AFGHANISTAN</md-option>
-                  <md-option value="AX">ALAND ISLANDS</md-option>
-                  <md-option value="AL">ALBANIA</md-option>
-                  <md-option value="DZ">ALGERIA</md-option>
-                  <md-option value="AS">AMERICAN SAMOA</md-option>
-                  <md-option value="AD">ANDORRA</md-option>
-                  <md-option value="AO">ANGOLA</md-option>
-                  <md-option value="AI">ANGUILLA</md-option>
-                  <md-option value="AQ">ANTARCTICA</md-option>
-                  <md-option value="AG">ANTIGUA AND BARBUDA</md-option>
-                  <md-option value="AR">ARGENTINA</md-option>
-                  <md-option value="AM">ARMENIA</md-option>
-                  <md-option value="AW">ARUBA</md-option>
-                  <md-option value="AU">AUSTRALIA</md-option>
-                  <md-option value="AT">AUSTRIA</md-option>
-                  <md-option value="AZ">AZERBAIJAN</md-option>
-                  <md-option value="BS">BAHAMAS</md-option>
-                  <md-option value="BH">BAHRAIN</md-option>
-                  <md-option value="BD">BANGLADESH</md-option>
-                  <md-option value="BB">BARBADOS</md-option>
-                  <md-option value="BY">BELARUS</md-option>
-                  <md-option value="BE">BELGIUM</md-option>
-                  <md-option value="BZ">BELIZE</md-option>
-                  <md-option value="BJ">BENIN</md-option>
-                  <md-option value="BM">BERMUDA</md-option>
-                  <md-option value="BT">BHUTAN</md-option>
-                  <md-option value="BO">BOLIVIA</md-option>
-                  <md-option value="BQ">BONAIRE, SAINT EUSTATIUS and SABA</md-option>
-                  <md-option value="BA">BOSNIA AND HERZEGOVINA</md-option>
-                  <md-option value="BW">BOTSWANA</md-option>
-                  <md-option value="BV">BOUVET ISLAND</md-option>
-                  <md-option value="BR">BRAZIL</md-option>
-                  <md-option value="IO">BRITISH INDIAN OCEAN TERRITORY</md-option>
-                  <md-option value="BN">BRUNEI DARUSSALAM</md-option>
-                  <md-option value="BG">BULGARIA</md-option>
-                  <md-option value="BF">BURKINA FASO</md-option>
-                  <md-option value="BI">BURUNDI</md-option>
-                  <md-option value="KH">CAMBODIA</md-option>
-                  <md-option value="CM">CAMEROON</md-option>
-                  <md-option value="CA">CANADA</md-option>
-                  <md-option value="CV">CAPE VERDE</md-option>
-                  <md-option value="KY">CAYMAN ISLANDS</md-option>
-                  <md-option value="CF">CENTRAL AFRICAN REPUBLIC</md-option>
-                  <md-option value="TD">CHAD</md-option>
-                  <md-option value="CL">CHILE</md-option>
-                  <md-option value="CN">CHINA</md-option>
-                  <md-option value="CX">CHRISTMAS ISLAND</md-option>
-                  <md-option value="CC">COCOS (KEELING) ISLANDS</md-option>
-                  <md-option value="CO">COLOMBIA</md-option>
-                  <md-option value="KM">COMOROS</md-option>
-                  <md-option value="CG">CONGO</md-option>
-                  <md-option value="CD">CONGO, THE DEMOCRATIC REPUBLIC OF THE</md-option>
-                  <md-option value="CK">COOK ISLANDS</md-option>
-                  <md-option value="CR">COSTA RICA</md-option>
-                  <md-option value="CI">COTE D'IVOIRE</md-option>
-                  <md-option value="HR">CROATIA</md-option>
-                  <md-option value="CU">CUBA</md-option>
-                  <md-option value="CW">CURACAO</md-option>
-                  <md-option value="CY">CYPRUS</md-option>
-                  <md-option value="CZ">CZECH REPUBLIC</md-option>
-                  <md-option value="DK">DENMARK</md-option>
-                  <md-option value="DJ">DJIBOUTI</md-option>
-                  <md-option value="DM">DOMINICA</md-option>
-                  <md-option value="DO">DOMINICAN REPUBLIC</md-option>
-                  <md-option value="EC">ECUADOR</md-option>
-                  <md-option value="EG">EGYPT</md-option>
-                  <md-option value="SV">EL SALVADOR</md-option>
-                  <md-option value="GQ">EQUATORIAL GUINEA</md-option>
-                  <md-option value="ER">ERITREA</md-option>
-                  <md-option value="EE">ESTONIA</md-option>
-                  <md-option value="ET">ETHIOPIA</md-option>
-                  <md-option value="FO">FAEROE ISLANDS</md-option>
-                  <md-option value="FK">FALKLAND ISLANDS (MALVINAS)</md-option>
-                  <md-option value="FJ">FIJI</md-option>
-                  <md-option value="FI">FINLAND</md-option>
-                  <md-option value="FR">FRANCE</md-option>
-                  <md-option value="GF">FRENCH GUIANA</md-option>
-                  <md-option value="PF">FRENCH POLYNESIA</md-option>
-                  <md-option value="TF">FRENCH SOUTHERN TERRITORIES</md-option>
-                  <md-option value="GA">GABON</md-option>
-                  <md-option value="GM">GAMBIA</md-option>
-                  <md-option value="GE">GEORGIA</md-option>
-                  <md-option value="DE">GERMANY</md-option>
-                  <md-option value="GH">GHANA</md-option>
-                  <md-option value="GI">GIBRALTAR</md-option>
-                  <md-option value="GR">GREECE</md-option>
-                  <md-option value="GL">GREENLAND</md-option>
-                  <md-option value="GD">GRENADA</md-option>
-                  <md-option value="GP">GUADELOUPE</md-option>
-                  <md-option value="GU">GUAM</md-option>
-                  <md-option value="GT">GUATEMALA</md-option>
-                  <md-option value="GG">GUERNSEY, C.I.</md-option>
-                  <md-option value="GN">GUINEA</md-option>
-                  <md-option value="GW">GUINEA-BISSAU</md-option>
-                  <md-option value="GY">GUYANA</md-option>
-                  <md-option value="HT">HAITI</md-option>
-                  <md-option value="HM">HEARD ISLAND AND MCDONALD ISLANDS</md-option>
-                  <md-option value="VA">HOLY SEE (VATICAN CITY STATE)</md-option>
-                  <md-option value="HN">HONDURAS</md-option>
-                  <md-option value="HK">HONG KONG</md-option>
-                  <md-option value="HU">HUNGARY</md-option>
-                  <md-option value="IS">ICELAND</md-option>
-                  <md-option value="IN">INDIA</md-option>
-                  <md-option value="ID">INDONESIA</md-option>
-                  <md-option value="IR">IRAN, ISLAMIC REPUBLIC OF</md-option>
-                  <md-option value="IQ">IRAQ</md-option>
-                  <md-option value="IE">IRELAND</md-option>
-                  <md-option value="IM">ISLE OF MAN</md-option>
-                  <md-option value="IL">ISRAEL</md-option>
-                  <md-option value="IT">ITALY</md-option>
-                  <md-option value="JM">JAMAICA</md-option>
-                  <md-option value="JP">JAPAN</md-option>
-                  <md-option value="JE">JERSEY</md-option>
-                  <md-option value="JO">JORDAN</md-option>
-                  <md-option value="KZ">KAZAKHSTAN</md-option>
-                  <md-option value="KE">KENYA</md-option>
-                  <md-option value="KI">KIRIBATI</md-option>
-                  <md-option value="KP">KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</md-option>
-                  <md-option value="KR">KOREA, REPUBLIC OF</md-option>
-                  <md-option value="KS">KOSOVO</md-option>
-                  <md-option value="KW">KUWAIT</md-option>
-                  <md-option value="KG">KYRGYZSTAN</md-option>
-                  <md-option value="LA">LAO PEOPLE'S DEMOCRATIC REPUBLIC</md-option>
-                  <md-option value="LV">LATVIA</md-option>
-                  <md-option value="LB">LEBANON</md-option>
-                  <md-option value="LS">LESOTHO</md-option>
-                  <md-option value="LR">LIBERIA</md-option>
-                  <md-option value="LY">LIBYA</md-option>
-                  <md-option value="LI">LIECHTENSTEIN</md-option>
-                  <md-option selected="" value="true">LIETUVA</md-option>
-                  <md-option value="LU">LUXEMBOURG</md-option>
-                  <md-option value="MO">MACAO</md-option>
-                  <md-option value="MK">MACEDONIA,THE FORMER YUGOSLAV REPUBL. OF</md-option>
-                  <md-option value="MG">MADAGASCAR</md-option>
-                  <md-option value="MW">MALAWI</md-option>
-                  <md-option value="MY">MALAYSIA</md-option>
-                  <md-option value="MV">MALDIVES</md-option>
-                  <md-option value="ML">MALI</md-option>
-                  <md-option value="MT">MALTA</md-option>
-                  <md-option value="MH">MARSHALL ISLANDS</md-option>
-                  <md-option value="MQ">MARTINIQUE</md-option>
-                  <md-option value="MR">MAURITANIA</md-option>
-                  <md-option value="MU">MAURITIUS</md-option>
-                  <md-option value="YT">MAYOTTE</md-option>
-                  <md-option value="MX">MEXICO</md-option>
-                  <md-option value="FM">MICRONESIA, FEDERATED STATES OF</md-option>
-                  <md-option value="MD">MOLDOVA</md-option>
-                  <md-option value="MC">MONACO</md-option>
-                  <md-option value="MN">MONGOLIA</md-option>
-                  <md-option value="ME">MONTENEGRO</md-option>
-                  <md-option value="MS">MONTSERRAT</md-option>
-                  <md-option value="MA">MOROCCO</md-option>
-                  <md-option value="MZ">MOZAMBIQUE</md-option>
-                  <md-option value="MM">MYANMAR</md-option>
-                  <md-option value="NA">NAMIBIA</md-option>
-                  <md-option value="NR">NAURU</md-option>
-                  <md-option value="NP">NEPAL</md-option>
-                  <md-option value="NL">NETHERLANDS</md-option>
-                  <md-option value="NC">NEW CALEDONIA</md-option>
-                  <md-option value="NZ">NEW ZEALAND</md-option>
-                  <md-option value="NI">NICARAGUA</md-option>
-                  <md-option value="NE">NIGER</md-option>
-                  <md-option value="NG">NIGERIA</md-option>
-                  <md-option value="NU">NIUE</md-option>
-                  <md-option value="NF">NORFOLK ISLAND</md-option>
-                  <md-option value="MP">NORTHERN MARIANA ISLANDS</md-option>
-                  <md-option value="NO">NORWAY</md-option>
-                  <md-option value="OM">OMAN</md-option>
-                  <md-option value="PK">PAKISTAN</md-option>
-                  <md-option value="PW">PALAU</md-option>
-                  <md-option value="PS">PALESTINIAN TERRITORY, OCCUPIED</md-option>
-                  <md-option value="PA">PANAMA</md-option>
-                  <md-option value="PG">PAPUA NEW GUINEA</md-option>
-                  <md-option value="PY">PARAGUAY</md-option>
-                  <md-option value="PE">PERU</md-option>
-                  <md-option value="PH">PHILIPPINES</md-option>
-                  <md-option value="PN">PITCAIRN</md-option>
-                  <md-option value="PL">POLAND</md-option>
-                  <md-option value="PT">PORTUGAL</md-option>
-                  <md-option value="PR">PUERTO RICO</md-option>
-                  <md-option value="QA">QATAR</md-option>
-                  <md-option value="RE">REUNION</md-option>
-                  <md-option value="RO">ROMANIA</md-option>
-                  <md-option value="RU">RUSSIAN FEDERATION</md-option>
-                  <md-option value="RW">RWANDA</md-option>
-                  <md-option value="BL">SAINT BARTHELEMY</md-option>
-                  <md-option value="SH">SAINT HELENA</md-option>
-                  <md-option value="KN">SAINT KITTS AND NEVIS</md-option>
-                  <md-option value="LC">SAINT LUCIA</md-option>
-                  <md-option value="SX">SAINT MAARTEN(DUTCH PART)</md-option>
-                  <md-option value="MF">SAINT MARTIN</md-option>
-                  <md-option value="PM">SAINT PIERRE AND MIQUELON</md-option>
-                  <md-option value="VC">SAINT VINCENT AND THE GRENADINES</md-option>
-                  <md-option value="WS">SAMOA</md-option>
-                  <md-option value="SM">SAN MARINO</md-option>
-                  <md-option value="ST">SAO TOME AND PRINCIPE</md-option>
-                  <md-option value="SA">SAUDI ARABIA</md-option>
-                  <md-option value="SN">SENEGAL</md-option>
-                  <md-option value="RS">SERBIA</md-option>
-                  <md-option value="SC">SEYCHELLES</md-option>
-                  <md-option value="SL">SIERRA LEONE</md-option>
-                  <md-option value="SG">SINGAPORE</md-option>
-                  <md-option value="SK">SLOVAKIA</md-option>
-                  <md-option value="SI">SLOVENIA</md-option>
-                  <md-option value="SB">SOLOMON ISLANDS</md-option>
-                  <md-option value="SO">SOMALIA</md-option>
-                  <md-option value="ZA">SOUTH AFRICA</md-option>
-                  <md-option value="GS">SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</md-option>
-                  <md-option value="SS">SOUTH SUDAN,REPUBLIC OF</md-option>
-                  <md-option value="ES">SPAIN</md-option>
-                  <md-option value="LK">SRI LANKA</md-option>
-                  <md-option value="SD">SUDAN</md-option>
-                  <md-option value="SR">SURINAME</md-option>
-                  <md-option value="SJ">SVALBARD AND JAN MAYEN</md-option>
-                  <md-option value="SZ">SWAZILAND</md-option>
-                  <md-option value="SE">SWEDEN</md-option>
-                  <md-option value="CH">SWITZERLAND</md-option>
-                  <md-option value="SY">SYRIAN ARAB REPUBLIC</md-option>
-                  <md-option value="TW">TAIWAN, PROVINCE OF CHINA</md-option>
-                  <md-option value="TJ">TAJIKISTAN</md-option>
-                  <md-option value="TZ">TANZANIA, UNITED REPUBLIC OF</md-option>
-                  <md-option value="TH">THAILAND</md-option>
-                  <md-option value="TL">TIMOR-LESTE</md-option>
-                  <md-option value="TG">TOGO</md-option>
-                  <md-option value="TK">TOKELAU</md-option>
-                  <md-option value="TO">TONGA</md-option>
-                  <md-option value="TT">TRINIDAD AND TOBAGO</md-option>
-                  <md-option value="TN">TUNISIA</md-option>
-                  <md-option value="TR">TURKEY</md-option>
-                  <md-option value="TM">TURKMENISTAN</md-option>
-                  <md-option value="TC">TURKS AND CAICOS ISLANDS</md-option>
-                  <md-option value="TV">TUVALU</md-option>
-                  <md-option value="UG">UGANDA</md-option>
-                  <md-option value="UA">UKRAINE</md-option>
-                  <md-option value="AE">UNITED ARAB EMIRATES</md-option>
-                  <md-option value="GB">UNITED KINGDOM</md-option>
-                  <md-option value="US">UNITED STATES</md-option>
-                  <md-option value="UM">UNITED STATES MINOR OUTLYING ISLANDS</md-option>
-                  <md-option value="UY">URUGUAY</md-option>
-                  <md-option value="UZ">UZBEKISTAN</md-option>
-                  <md-option value="VU">VANUATU</md-option>
-                  <md-option value="VE">VENEZUELA</md-option>
-                  <md-option value="VN">VIET NAM</md-option>
-                  <md-option value="VG">VIRGIN ISLANDS, BRITISH</md-option>
-                  <md-option value="VI">VIRGIN ISLANDS, U.S.</md-option>
-                  <md-option value="WF">WALLIS AND FUTUNA</md-option>
-                  <md-option value="EH">WESTERN SAHARA</md-option>
-                  <md-option value="YE">YEMEN</md-option>
-                  <md-option value="ZM">ZAMBIA</md-option>
-                  <md-option value="ZW">ZIMBABWE</md-option>
-                  <!--<md-option id=" "></md-option>-->
-              </md-select>
-            <!--</md-input-container>-->
+            <country-list></country-list>
           </div>
           <div class="form-group">
-            <!--<md-input-container>-->
             <div *ngIf="true">
-            <input type="text" mdInput placeholder="City" class="form-control" #city required>
-            <span>City*</span>
-            <md-select>
-              <!--<select class="form-field-long" id="town" name="town">-->
-                <md-option value="242">Akmenė</md-option>
-                <md-option value="348">Akmenės raj.</md-option>
-                <md-option value="277">Akmenės raj. Naujoji Akmenė</md-option>
-                <md-option value="279">Akmenės raj. Venta</md-option>
-                <md-option value="278">Akmenės raj. Viekšniai</md-option>
-                <md-option value="346">Alytaus raj.</md-option>
-                <md-option value="247">Alytaus raj. Daugai</md-option>
-                <md-option value="249">Alytaus raj. Simnas</md-option>
-                <md-option value="235">Alytus</md-option>
-                <md-option value="200">Anykščiai</md-option>
-                <md-option value="311">Anykščių raj.</md-option>
-                <md-option value="292">Anykščių raj. Kavarskas</md-option>
-                <md-option value="293">Anykščių raj. Troškūnai</md-option>
-                <md-option value="240">Birštonas</md-option>
-                <md-option value="201">Biržai</md-option>
-                <md-option value="312">Biržų raj.</md-option>
-                <md-option value="270">Biržų raj. Vabalninkas</md-option>
-                <md-option value="237">Druskininkai</md-option>
-                <md-option value="202">Ignalina</md-option>
-                <md-option value="313">Ignalinos raj.</md-option>
-                <md-option value="294">Ignalinos raj. Dūkštas</md-option>
-                <md-option value="204">Jonava</md-option>
-                <md-option value="315">Jonavos raj.</md-option>
-                <md-option value="314">Joniškio raj.</md-option>
-                <md-option value="280">Joniškio raj. Žagarė</md-option>
-                <md-option value="203">Joniškis</md-option>
-                <md-option value="205">Jurbarkas</md-option>
-                <md-option value="316">Jurbarko raj.</md-option>
-                <md-option value="287">Jurbarko raj. Smalininkai</md-option>
-                <md-option value="317">Kaišiadorių r.</md-option>
-                <md-option value="251">Kaišiadorių raj. Žiežmariai</md-option>
-                <md-option value="206">Kaišiadorys</md-option>
-                <md-option value="231">Kaunas</md-option>
-                <md-option value="342">Kauno raj.</md-option>
-                <md-option value="253">Kauno raj. Ežerėlis</md-option>
-                <md-option value="254">Kauno raj. Garliava</md-option>
-                <md-option value="255">Kauno raj. Kačerginė</md-option>
-                <md-option value="256">Kauno raj. Kulautuva</md-option>
-                <md-option value="252">Kauno raj. Vilkija</md-option>
-                <md-option value="207">Kelmė</md-option>
-                <md-option value="318">Kelmės raj.</md-option>
-                <md-option value="281">Kelmės raj. Tytuvėnai</md-option>
-                <md-option value="282">Kelmės raj. Užventis</md-option>
-                <md-option value="232">Klaipėda</md-option>
-                <md-option value="343">Klaipėdos raj.</md-option>
-                <md-option value="259">Klaipėdos raj. Gargždai</md-option>
-                <md-option value="260">Klaipėdos raj. Priekulė</md-option>
-                <md-option value="208">Kretinga</md-option>
-                <md-option value="319">Kretingos raj.</md-option>
-                <md-option value="261">Kretingos raj. Salantai</md-option>
-                <md-option value="320">Kupiškio raj.</md-option>
-                <md-option value="271">Kupiškio raj. Subačius</md-option>
-                <md-option value="209">Kupiškis</md-option>
-                <md-option value="246">Kėdainiai</md-option>
-                <md-option value="352">Kėdainių raj.</md-option>
-                <md-option value="210">Lazdijai</md-option>
-                <md-option value="321">Lazdijų raj.</md-option>
-                <md-option value="250">Lazdijų raj. Veisiejai</md-option>
-                <md-option value="236">Marijampolė</md-option>
-                <md-option value="347">Marijampolės r.</md-option>
-                <md-option value="265">Marijampolės raj. Kalvarija</md-option>
-                <md-option value="264">Marijampolės raj. Kazlų Rūda</md-option>
-                <md-option value="211">Mažeikiai</md-option>
-                <md-option value="322">Mažeikių raj.</md-option>
-                <md-option value="289">Mažeikių raj. Seda</md-option>
-                <md-option value="212">Molėtai</md-option>
-                <md-option value="323">Molėtų raj.</md-option>
-                <md-option value="239">Neringa</md-option>
-                <md-option value="213">Pakruojis</md-option>
-                <md-option value="324">Pakruojo raj.</md-option>
-                <md-option value="283">Pakruojo raj. Linkuva</md-option>
-                <md-option value="238">Palanga</md-option>
-                <md-option value="345">Panevėžio raj.</md-option>
-                <md-option value="272">Panevėžio raj. Ramygala</md-option>
-                <md-option value="234">Panevėžys</md-option>
-                <md-option value="325">Pasvalio raj.</md-option>
-                <md-option value="273">Pasvalio raj. Joniškėlis</md-option>
-                <md-option value="214">Pasvalys</md-option>
-                <md-option value="215">Plungė</md-option>
-                <md-option value="326">Plungės raj.</md-option>
-                <md-option value="290">Plungės raj. Rietavas</md-option>
-                <md-option value="216">Prienai</md-option>
-                <md-option value="327">Prienų raj.</md-option>
-                <md-option value="257">Prienų raj. Jieznas</md-option>
-                <md-option value="333">Radviliškio r.</md-option>
-                <md-option value="285">Radviliškio raj. Tyruliai</md-option>
-                <md-option value="284">Radviliškio raj. Šeduva</md-option>
-                <md-option value="222">Radviliškis</md-option>
-                <md-option value="223">Raseiniai</md-option>
-                <md-option value="334">Raseinių raj.</md-option>
-                <md-option value="258">Raseinių raj. Ariogala</md-option>
-                <md-option value="335">Rokiškio raj.</md-option>
-                <md-option value="276">Rokiškio raj. Juodupė</md-option>
-                <md-option value="274">Rokiškio raj. Obeliai</md-option>
-                <md-option value="275">Rokiškio raj. Pandėlys</md-option>
-                <md-option value="224">Rokiškis</md-option>
-                <md-option value="225">Skuodas</md-option>
-                <md-option value="336">Skuodo raj.</md-option>
-                <md-option value="199">Tauragė</md-option>
-                <md-option value="310">Tauragės raj.</md-option>
-                <md-option value="288">Tauragės raj. Skaudvilė</md-option>
-                <md-option value="220">Telšiai</md-option>
-                <md-option value="291">Telšių raj. Varniai</md-option>
-                <md-option value="221">Trakai</md-option>
-                <md-option value="332">Trakų raj.</md-option>
-                <md-option value="305">Trakų raj. Elektrėnai</md-option>
-                <md-option value="306">Trakų raj. Grigiškės</md-option>
-                <md-option value="303">Trakų raj. Lentvaris</md-option>
-                <md-option value="307">Trakų raj. Rūdiškės</md-option>
-                <md-option value="304">Trakų raj. Vievis</md-option>
-                <md-option value="228">Ukmergė</md-option>
-                <md-option value="339">Ukmergės raj.</md-option>
-                <md-option value="229">Utena</md-option>
-                <md-option value="340">Utenos raj.</md-option>
-                <md-option value="230">Varėna</md-option>
-                <md-option value="341">Varėnos raj.</md-option>
-                <md-option value="349">Vilkaviškio r.</md-option>
-                <md-option value="268">Vilkaviškio raj. Kybartai</md-option>
-                <md-option value="269">Vilkaviškio raj. Virbalis</md-option>
-                <md-option value="243">Vilkaviškis</md-option>
-                <md-option value="309">Vilniaus raj.</md-option>
-                <md-option value="300">Vilniaus raj. Nemenčinė</md-option>
-                <md-option value="198">Vilnius</md-option>
-                <md-option value="241">Visaginas</md-option>
-                <md-option value="244">Zarasai</md-option>
-                <md-option value="350">Zarasų raj.</md-option>
-                <md-option value="295">Zarasų raj. Dusetos</md-option>
-                <md-option value="297">Zarasų raj. Turmantas</md-option>
-                <md-option value="226">Šakiai</md-option>
-                <md-option value="337">Šakių raj.</md-option>
-                <md-option value="267">Šakių raj. Gelgaudiškis</md-option>
-                <md-option value="266">Šakių raj. Kudirkos Naumiestis</md-option>
-                <md-option value="227">Šalčininkai</md-option>
-                <md-option value="338">Šalčininkų raj.</md-option>
-                <md-option value="299">Šalčininkų raj. Baltoji Vokė</md-option>
-                <md-option value="298">Šalčininkų raj. Eišiškės</md-option>
-                <md-option value="233">Šiauliai</md-option>
-                <md-option value="344">Šiaulių raj.</md-option>
-                <md-option value="286">Šiaulių raj. Kuršėnai</md-option>
-                <md-option value="217">Šilalė</md-option>
-                <md-option value="328">Šilalės raj.</md-option>
-                <md-option value="218">Šilutė</md-option>
-                <md-option value="329">Šilutės raj.</md-option>
-                <md-option value="262">Šilutės raj. Pagėgiai</md-option>
-                <md-option value="263">Šilutės raj. Panemunė</md-option>
-                <md-option value="219">Širvintos</md-option>
-                <md-option value="330">Širvintų raj.</md-option>
-                <md-option value="351">Švenčionių r.</md-option>
-                <md-option value="301">Švenčionių raj. Pabradė</md-option>
-                <md-option value="302">Švenčionių raj. Švenčionėliai</md-option>
-                <md-option value="245">Švenčionys</md-option>
-                <!--<md-option id=""></md-option>-->
-              </md-select>
+              <input type="text" mdInput placeholder="City" class="form-control" #city required>
+              <span>City*</span>
+              <city-list></city-list>
             </div>
-
-            <!--</select>-->
-            <!--</md-input-container>-->
-          </div>
-          <div class="form-group">
-            <md-input-container>
-            <input type="text" mdInput placeholder="Address" class="form-control" #adress required>
-            </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService} from "./form.service";
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   error: any;
   customers: any;
   showDialog = false;
+  ctrlDisabled = false;
 
   constructor(private formService: FormService) {
   }

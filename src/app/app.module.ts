@@ -1,5 +1,5 @@
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 import { FormService } from './form.service';
 import { DialogComponent } from './dialog.component';
+import { CountryListComponent } from './countrylist.component';
+import { CityListComponent} from './citylist.component';
 
-
+// Angular 2 root module
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
+    CountryListComponent,
+    CityListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +28,10 @@ import { DialogComponent } from './dialog.component';
   providers: [
     FormService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    CountryListComponent,
+    CityListComponent
+  ]
 })
 export class AppModule { }

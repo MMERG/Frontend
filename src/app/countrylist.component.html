@@ -1,0 +1,10 @@
+/**
+* Created by MT on 2017-03-01.
+*/
+<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)">
+  <option value="0">--Select--</option>
+  <option *ngFor="#country of countries" value={{country.id}}>
+    {{ country.name }}
+  </option>
+</select>
+

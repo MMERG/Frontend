@@ -1,0 +1,10 @@
+/**
+ * Created by MT on 2017-03-01.
+ */
+<select>
+  <option *ngIf='selectedCountry.id == 0' value="0">--Select--</option>
+  <option value="0">--Select--</option>
+  <option *ngFor="#city of cities" value={{city.id}}>
+    {{ city.name }}
+  </option>
+</select>
