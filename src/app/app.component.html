@@ -121,13 +121,24 @@
               </tr>
               </thead>
               <tbody align="center" style="">
+
+              <!--<tr>-->
+                <!--<td> </td>-->
+                <!--<td> </td>-->
+                <!--<td> </td>-->
+                <!--<td> </td>-->
+                <!--<td>{{payment.contractFee|currency:'EUR':true:'1.2-2'}}</td>-->
+              <!--</tr>-->
+
+
               <tr *ngFor="let payment of list"
-                  [class.selected]="payment === selectedPayment">
+              [class.selected]="payment === selectedPayment">
+
                 <td>{{payment.monthNumber}}</td>
                 <td>{{payment.remainingAmount|currency:'EUR':true:'1.2-2'}}</td>
-                <td>{{payment.monthlyPay|currency:'EUR':true:'1.2-2'}}</td>
+                <td>{{payment.monthlyPay+0.70|currency:'EUR':true:'1.2-2'}}</td>
                 <td>{{payment.monthlyInt|currency:'EUR':true:'1.2-2'}}</td>
-                <td>{{payment.contractFee|currency:'EUR':true:'1.2-2'}}</td>
+                <td>{{loanContractFee|currency:'EUR':true:'1.2-2'}}</td>
               </tr>
               </tbody>
             </table>

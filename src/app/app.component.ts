@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   incomeValue: number = 245;
   deptorsValue: number = 245;
   period: number = 6;
+  loanContractFee = 35;
 
 
   annualRate: number = 0.16;
