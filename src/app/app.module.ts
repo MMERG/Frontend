@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 import { FormService } from './form.service';
 import { DialogComponent } from './dialog.component';
+import { MdDataTableModule } from 'ng2-md-datatable';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DialogComponent } from './dialog.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    MdDataTableModule.forRoot()
   ],
   providers: [
     FormService

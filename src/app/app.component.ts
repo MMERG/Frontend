@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService} from "./form.service";
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,30 @@ export class AppComponent implements OnInit {
   categories: any;
   error: any;
   customers: any;
+  customerCode:any;
   showDialog = false;
+  showDialog2 = false;
   isValid = false;
+  userCode: any="";
   result1 = 0;
   result2 = 0;
 
   constructor(private formService: FormService) {
+  }
+
+
+  getCustomers() {
+    this.formService.getCustomers()
+      .then(customers => {
+        this.customers = customers;
+        console.log('success');
+      }).catch(error => {
+      this.error = error;
+      console.log('error');
+    })
+  }
+  ngOnInit(): void {
+    this.getCustomers();
   }
 
   addUser(firstName: string,
@@ -48,6 +67,8 @@ export class AppComponent implements OnInit {
     loanAmount = loanAmount.valueOf();
     loanTerm = loanTerm.valueOf();
     loanInterestPayDay = loanInterestPayDay.valueOf();
+    var code=Md5.hashStr(firstName+Math.random().toString());
+    this.userCode=code;
     if (!firstName) {
       return;
     }
@@ -66,7 +87,8 @@ export class AppComponent implements OnInit {
       email,
       loanAmount,
       loanTerm,
-      loanInterestPayDay)
+      loanInterestPayDay,
+    <string>code)
       .then(customer => {
         this.customers.push(customer)
       })
@@ -103,6 +125,8 @@ export class AppComponent implements OnInit {
     loanAmount = loanAmount.valueOf();
     loanTerm = loanTerm.valueOf();
     loanInterestPayDay = loanInterestPayDay.valueOf();
+    var code=Md5.hashStr(firstName+Math.random().toString());
+    this.userCode=code;
     if (!firstName) {
       return;
     }
@@ -121,25 +145,23 @@ export class AppComponent implements OnInit {
       email,
       loanAmount,
       loanTerm,
-      loanInterestPayDay)
+      loanInterestPayDay,
+      <string>code)
       .then(customerDraft => {
         this.customers.push(customerDraft)
       })
   }
 
 
-  ngOnInit(): void {
-    this.getCustomers();
-  }
 
-  getCustomers() {
-    this.formService.getCustomers()
-      .then(customers => {
-        this.customers = customers;
+  getCode(id:number){
+    this.formService.getCode(id)
+      .then(customerCode=>{
+        this.customerCode=customerCode;
         console.log('success');
-      }).catch(error => {
-      this.error = error;
-      console.log('error');
+      }).catch(error=>{
+        this.error = error;
+        console.log('error');
     })
   }
 

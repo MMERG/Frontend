@@ -84,7 +84,7 @@
 
 
   </md-tab>
-  <md-tab label="Vartojimo paskolos skaičiuoklė">
+  <md-tab label="Paraiškos pildymas">
 
     <div class="page-padding" align="center">
       <div>
@@ -115,6 +115,11 @@
             <md-input-container>
               <input type="number" mdInput placeholder="Mėnesis*" class="form-control" #loanTermM required>
             </md-input-container>
+            <!--DROPDWONAMS-->
+            <!--<md-select ng-model="someModel">-->
+              <!--<md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>-->
+            <!--</md-select>-->
+
           </div>
           <div class="form-group" >
             <md-input-container>
@@ -187,10 +192,37 @@
             <span class="unit">Eur</span>
           </div>
 
-          <button md-raised-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm=loanTermM.value + (loanTermY.value*12),loanInterestPayDay.value)">Save Form</button>
-          <button md-button style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,loanTerm=loanTermM.value + (loanTermY.value*12),loanInterestPayDay.value)">Submit</button>
+          <button md-raised-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2">Save Form</button>
+          <button md-button style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">Submit</button>
+          <app-dialog [(visible)]="showDialog">
+            <h1 class="mat-dialog-content">
+              Patvirtinimo kodas:
+              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
+                  <!--[ngClass]="{first:first,last:last}">-->
+                <!--<div *ngIf="last">{{ customer.code }}</div>-->
+              <!--</tr>-->
+            </h1>
+            <div>{{userCode}}</div>
+            <p class="md-body-2">Sveikiname, jūs sėkmingai patiekėte paskolos paraišką</p>
+            <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite stebėti savo paskolos būseną </p>
+            <button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>
+          </app-dialog>
+          <app-dialog [(visible)]="showDialog2">
+            <h1 class="mat-dialog-content">
+              Patvirtinimo kodas:
+              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
+              <!--[ngClass]="{first:first,last:last}">-->
+              <!--<div *ngIf="last">{{ customer.code }}</div>-->
+              <!--</tr>-->
+            </h1>
+            <div>{{userCode}}</div>
+            <p class="md-body-2">Jūs išsaugojot savo paraišką, galėsit pateikti ja vėliau</p>
+            <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite tęsti pildyti paraišką </p>
+            <button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
+          </app-dialog>
+      </div>
 
-        </div>
+
 
 
 
@@ -318,17 +350,79 @@
   </md-tab>
 
   <md-tab label="Paskolos būklė">
+    <div class="page-padding" align="center">
+      <div>
+        <md-toolbar color="primary" layout-align="center center">
+          <span class="spanCentered">Vartojimo paskolos skaičiuoklė</span>
+        </md-toolbar>
+      </div>
+    </div>
 
+  </md-tab>
+  <md-tab label="Admin">
+    <div class="page-padding" align="center">
+      <div>
+        <md-toolbar color="primary" layout-align="center center">
+          <span class="spanCentered">Paraiškos pildymas</span>
+        </md-toolbar>
+        <div>
+          <div >
+            <div >
+              <ng2-md-datatable >
+                <ng2-md-datatable-header>
+                  <ng2-md-datatable-column >Article</ng2-md-datatable-column>
+                  <ng2-md-datatable-column >Suma</ng2-md-datatable-column>
+                  <ng2-md-datatable-column >Vartotojas</ng2-md-datatable-column>
+                  <ng2-md-datatable-column >Statusas</ng2-md-datatable-column>
+                  <ng2-md-datatable-column >Data</ng2-md-datatable-column>
+                </ng2-md-datatable-header>
+                <tbody>
+                <ng2-md-datatable-row *ngFor="let customer of customers" selectableValue="status">
+                  <td>{{customer.loanAmount}}</td>
+                  <td>{{customer.firstName+' '+customer.lastName}}</td>
+                  <td>{{customer.status}}</td>
+                  <td>{{customer.date}}</td>
+                  <!--this.customers[this.users.length - 1]-->
+                </ng2-md-datatable-row>
 
+                </tbody>
 
+              </ng2-md-datatable>
 
+              <!--!!!!!!!!!!!!!!!!UZKOMENTUOK ng2-md-datatable jei neveikia ir atkomentuok <table>  Veiks su paprasta lentele !!!!!!!!!!!!!!-->
+              <!--<table>-->
+                <!--<thead>-->
+                <!--<tr>-->
+                  <!--<th>Suma</th>-->
+                  <!--<th>Vartotojas</th>-->
+                  <!--<th>Statusas</th>-->
+                  <!--<th>Data</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr *ngFor="let customer of customers">-->
+                  <!--<th>{{ customer.loanAmount }}</th>-->
+                  <!--<th>{{ customer.firstName+' '+customer.lastName }}</th>-->
+                  <!--<th>{{customer.status}}</th>-->
+                  <!--<th>{{customer.date}}</th>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+              <!--</table>-->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </md-tab>
 
 
 
 </md-tab-group>
 
-
+<!--<tr *ngFor="let customer of customers;let first=first;let last=last" [ngClass]="{first:first,last:last}">-->
+  <!--<td>{{hero.firstName}}</td>-->
+<!--</tr>-->
 
 <!--<h1>Customers:</h1>-->
 <!--<div >-->
@@ -423,6 +517,29 @@
   <!--<button type="submit" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value)">Submit</button>-->
 
 <!--</form>-->
+
+
+<!--<table>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>Suma</th>-->
+<!--<th>Vartotojas</th>-->
+<!--<th>Statusas</th>-->
+<!--<th>Data</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
+    <!--[ngClass]="{first:first,last:last}">-->
+<!--<th>{{ customer.loanAmount }}</th>-->
+<!--<th>{{ customer.firstName+' '+customer.lastName }}</th>-->
+<!--<th>{{customer.status}}</th>-->
+<!--<th>{{customer.date}}</th>-->
+  <!--<div *ngIf="last">{{ customer.code }}</div>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+
 
 
 
