@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService} from "./form.service";
+import { Payment } from './payment';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,37 @@ export class AppComponent implements OnInit {
   error: any;
   customers: any;
   showDialog = false;
-  isValid = false;
-  result1 = 0;
-  result2 = 0;
+  showDialog3 = false;
+  // ifAlone = true;
+
+  //Calculator
+  loanValue: number = 500;
+  incomeValue: number = 245;
+  deptorsValue: number = 245;
+  period: number = 6;
+
+
+  annualRate: number = 0.16;
+
+  ifalone: boolean = true;
+  list: Payment[];
+  // /Calculator
+
+  // isValid = false;
+  // interestAndRepaymentPerMonth =0;
+  // result1 = 0;
+  // loan1 = 0;
+  // interestRatePerYear = 0;
+  // loanTermMonth = 0;
+  // loanBalanceMonth = 0;
+  // loanRepaymentPerMonth = 0;
+  // loanInterestPerMonth = 0;
+
+
 
   constructor(private formService: FormService) {
   }
+
 
   addUser(firstName: string,
           lastName: string,
@@ -130,7 +156,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCustomers();
+    console.log('onInit');
   }
+
+
 
   getCustomers() {
     this.formService.getCustomers()
@@ -143,12 +172,88 @@ export class AppComponent implements OnInit {
     })
   }
 
-  count(income: number, loan: number) {
+  showValue(loanValue: number, period: number) {
 
-    this.isValid = true;
 
-    return income + loan;
+    this.list = [];
+
+    let r = this.annualRate / 12;
+    let monthlyPayment = 0;
+    let monthlyInterest = 0;
+    let leftValue = this.loanValue;
+
+    monthlyPayment = this.calculateMonthlyPayment(loanValue, this.period);
+    for (let i: number = 1; i <= this.period; i++)
+
+    {
+
+
+      monthlyInterest = this.calculateMonthlyInterest(leftValue);
+
+      this.list.push(new Payment(i, leftValue, monthlyPayment, monthlyInterest, 0.70));
+      leftValue = leftValue - (monthlyPayment - monthlyInterest);
+
+
+    }
+    console.log(this.list);
+    //return this.list;
+  }
+  changeMerriedStateToAlone()
+  {
+    this.ifalone = true;
+  }
+
+  changeMerriedStateToMerried()
+  {
+    this.ifalone = false;
+  }
+
+  calculateMonthlyPayment(lvalue: number, period: number)
+  {
+
+    return ((lvalue * (this.annualRate/12))/(1-((1+(this.annualRate/12))**(-1*period))));
 
   }
+
+  calculateMonthlyInterest(lvalue: number)
+  {
+    return lvalue * this.annualRate/12;
+  }
+
+  ifIncomeToLow (income1:number, income2:number){
+    console.log(income1+income2);
+
+    if (income1+income2>666){
+      this.showDialog = true;
+      console.log(income1+income2);
+    }
+    else {
+      this.showDialog3 = !this.showDialog3;
+    }
+  }
+  // count(income1:number, loan1: number) {
+  //   this.interestRatePerYear = 0.16;
+  //   this.loanTermMonth = 5*12;
+  //
+  //
+  //   this.isValid = true;
+  //
+  //   this.interestAndRepaymentPerMonth=((loan1*(this.interestRatePerYear/12))/(1-((1+(this.interestRatePerYear/12))**(-1*this.loanTermMonth))));
+  //
+  //   this.loanBalanceMonth = this.loan1-this.interestAndRepaymentPerMonth;
+  //   this.loanRepaymentPerMonth = this.interestAndRepaymentPerMonth-(loan1*this.interestRatePerYear/12);
+  //   this.loanInterestPerMonth = loan1*this.interestRatePerYear/12;
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //   return this.loanRepaymentPerMonth, this.loanInterestPerMonth, this.interestAndRepaymentPerMonth;
+  //
+  // }
 
 }

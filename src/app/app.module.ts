@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 import { FormService } from './form.service';
 import { DialogComponent } from './dialog.component';
+import {CalculatorComponent} from "./calculator.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,

@@ -24,10 +24,23 @@ export class DialogComponent implements OnInit  {
   @Input() closable = true;
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  // isValid = false;
 
   constructor() { }
 
 ngOnInit(){}
+
+
+  // count(income:number, loan:number) {
+  //
+  //     this.isValid = true;
+  //
+  //     return income + loan;
+  //
+  //   }
+
+
+
 
 close(){
   this.visible = false;

@@ -13,9 +13,19 @@
   margin-left: auto;
   margin-right: auto;
 }
+.spanRight {
+  /*font-size: 22px;*/
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .md-slider-horizontal {
   width:40%;
+}
+
+.md-slider-horizontal-period {
+  width:20%;
 }
 
 .label {
@@ -66,3 +76,9 @@
   /*margin: 2px 17px 0 0;*/
   /*background: url('images/bg.spreadsheets_consumer_slider.png') no-repeat 0 0;*/
 /*}*/
+.table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
