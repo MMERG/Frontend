@@ -3,9 +3,6 @@
 </div>
 
 <md-tab-group class="topToolbar">
-
-
-
   <md-tab label="Paskolos skaičiuoklė">
 
 
@@ -48,18 +45,12 @@
       <button type="submit" (click)="count(income, loan)"></button>
 
 
-
       <div *ngIf="isValid">
 
         <label>{{this.result1}}</label>
 
 
       </div>
-
-
-
-
-
 
 
       <div *ngIf="ifAlone">
@@ -94,22 +85,22 @@
 
         <div>
 
-          <div >
-          <div class="form-group">
-            <md-input-container>
-              <!--<label class="inputFormStyle">Loan Amount *</label>-->
-              <input type="number" mdInput placeholder="Paskolos suma*" class="form-control" #loanAmount required>
+          <div>
+            <div class="form-group">
+              <md-input-container>
+                <!--<label class="inputFormStyle">Loan Amount *</label>-->
+                <input type="number" mdInput placeholder="Paskolos suma*" class="form-control" #loanAmount required>
 
-            </md-input-container>
-            <span class="unit">Eur</span>
+              </md-input-container>
+              <span class="unit">Eur</span>
+            </div>
           </div>
-          </div>
           <div class="form-group">
 
-            <span >Paskolos terminas*:</span>
+            <span>Paskolos terminas*:</span>
 
             <md-input-container>
-            <input type="number" mdInput placeholder="Metai" class="form-control" #loanTermY required>
+              <input type="number" mdInput placeholder="Metai" class="form-control" #loanTermY required>
             </md-input-container>
 
             <md-input-container>
@@ -117,24 +108,25 @@
             </md-input-container>
             <!--DROPDWONAMS-->
             <!--<md-select ng-model="someModel">-->
-              <!--<md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>-->
+            <!--<md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>-->
             <!--</md-select>-->
 
           </div>
-          <div class="form-group" >
+          <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Paskolos ir palūkanų mokėjimo diena*" class="form-control" #loanInterestPayDay required>
+              <input type="number" mdInput placeholder="Paskolos ir palūkanų mokėjimo diena*" class="form-control"
+                     #loanInterestPayDay required>
             </md-input-container>
           </div>
 
           <div class="form-group" style="padding-top: 3%">
             <md-input-container>
-            <input type="text" mdInput placeholder="Vardas*" class="form-control" #firstName required>
+              <input type="text" mdInput placeholder="Vardas*" class="form-control" #firstName required>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-            <input type="text" mdInput placeholder="Pavardė" class="form-control" #lastName required>
+              <input type="text" mdInput placeholder="Pavardė" class="form-control" #lastName required>
             </md-input-container>
           </div>
           <div class="form-group">
@@ -177,29 +169,36 @@
           </div>
           <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Telefono numeris 2" class="form-control" #phoneNumber2 >
+              <input type="number" mdInput placeholder="Telefono numeris 2" class="form-control" #phoneNumber2>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-              <input type="text" mdInput placeholder="El. paštas" class="form-control" #email >
+              <input type="text" mdInput placeholder="El. paštas" class="form-control" #email>
             </md-input-container>
           </div>
           <div class="form-group">
             <md-input-container>
-              <input type="number" mdInput placeholder="Mėnesinis atlyginimas atskaičius mokesčius" class="form-control" #monthlySalary required>
+              <input type="number" mdInput placeholder="Mėnesinis atlyginimas atskaičius mokesčius" class="form-control"
+                     #monthlySalary required>
             </md-input-container>
             <span class="unit">Eur</span>
           </div>
 
-          <button md-raised-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2">Save Form</button>
-          <button md-button style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">Submit</button>
+          <button md-raised-button type="submit" formnovalidate
+                  (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2">
+            Save Form
+          </button>
+          <button md-button style="border: double #ff9319" type="submit" class="mat-active"
+                  (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">
+            Submit
+          </button>
           <app-dialog [(visible)]="showDialog">
             <h1 class="mat-dialog-content">
               Patvirtinimo kodas:
               <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-                  <!--[ngClass]="{first:first,last:last}">-->
-                <!--<div *ngIf="last">{{ customer.code }}</div>-->
+              <!--[ngClass]="{first:first,last:last}">-->
+              <!--<div *ngIf="last">{{ customer.code }}</div>-->
               <!--</tr>-->
             </h1>
             <div>{{userCode}}</div>
@@ -220,145 +219,189 @@
             <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite tęsti pildyti paraišką </p>
             <button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
           </app-dialog>
+        </div>
       </div>
-
-
-
-
-
-
-
-        <!--<md-card class="demo-card demo-basic">-->
-          <!--<md-toolbar color="primary">-->
-            <!--Hello&nbsp;-->
-            <!--<md-input-container dividerColor="accent">-->
-              <!--<input mdInput [(ngModel)]="name" type="text" placeholder="First name">-->
-            <!--</md-input-container>,-->
-            <!--how are you?-->
-          <!--</md-toolbar>-->
-          <!--<md-card-content>-->
-            <!--<p>-->
-              <!--<md-input-container>-->
-                <!--<input mdInput disabled placeholder="Disabled field" value="Value">-->
-              <!--</md-input-container>-->
-              <!--<md-input-container>-->
-                <!--<input mdInput required placeholder="Required field">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-input-container style="width: 100%">-->
-                <!--<input mdInput placeholder="100% width placeholder">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-input-container style="width: 100%">-->
-                <!--<input mdInput #input placeholder="Character count (100 max)" maxLength="100">-->
-                <!--<md-hint align="end">{{input.value.length}} / 100</md-hint>-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-input-container hintLabel="Hint label" style="width: 100%">-->
-                <!--<input mdInput placeholder="Show Hint Label">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-
-            <!--<p>-->
-              <!--<md-input-container>-->
-                <!--<input mdInput>-->
-                <!--<md-placeholder>-->
-                  <!--I <md-icon class="demo-icons">favorite</md-icon> <b>bold</b> placeholder-->
-                <!--</md-placeholder>-->
-                <!--<md-hint>-->
-                  <!--I also <md-icon class="demo-icons">home</md-icon> <i>italic</i> hint labels-->
-                <!--</md-hint>-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-input-container hintLabel="Hint label" style="width: 100%">-->
-                <!--<input mdInput #hintLabelWithCharCount placeholder="Show Hint Label With Character Count">-->
-                <!--<md-hint align="end">{{hintLabelWithCharCount.value.length}}</md-hint>-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-checkbox [(ngModel)]="dividerColor">Check to change the divider color:</md-checkbox>-->
-              <!--<md-input-container [dividerColor]="dividerColor ? 'primary' : 'accent'">-->
-                <!--<input mdInput [placeholder]="dividerColor ? 'Primary color' : 'Accent color'">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-checkbox [(ngModel)]="requiredField"> Check to make required:</md-checkbox>-->
-              <!--<md-input-container>-->
-                <!--<input mdInput-->
-                       <!--[required]="requiredField"-->
-                       <!--[placeholder]="requiredField ? 'Required field' : 'Not required field'">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-            <!--<p>-->
-              <!--<md-button-toggle-group [(ngModel)]="floatingLabel">-->
-                <!--<md-button-toggle value="auto">Auto Float</md-button-toggle>-->
-                <!--<md-button-toggle value="always">Always Float</md-button-toggle>-->
-                <!--<md-button-toggle value="never">Never Float</md-button-toggle>-->
-              <!--</md-button-toggle-group>-->
-            <!--</p>-->
-
-            <!--<p>-->
-              <!--<md-input-container [floatPlaceholder]="floatingLabel">-->
-                <!--<input mdInput placeholder="Placeholder">-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-
-            <!--<p>-->
-              <!--<md-input-container>-->
-                <!--<input mdInput placeholder="Prefixed" value="example">-->
-                <!--<div mdPrefix>Example:&nbsp;</div>-->
-              <!--</md-input-container>-->
-              <!--<md-input-container align="end">-->
-                <!--<input mdInput placeholder="Suffixed" value="123">-->
-                <!--<span mdSuffix>.00 €</span>-->
-              <!--</md-input-container>-->
-              <!--<br/>-->
-              <!--Both:-->
-              <!--<md-input-container align="end">-->
-                <!--<input mdInput #email placeholder="Email Address" value="angular-core">-->
-                <!--<span mdPrefix>-->
-          <!--<md-icon [class.primary]="email.focused" class="demo-icons demo-transform">email</md-icon>-->
-          <!--&nbsp;-->
-        <!--</span>-->
-                <!--<span mdSuffix class="demo-transform" [class.primary]="email.focused">-->
-          <!--&nbsp;@gmail.com-->
-        <!--</span>-->
-              <!--</md-input-container>-->
-            <!--</p>-->
-
-            <!--<p>-->
-              <!--Empty: <md-input-container><input mdInput></md-input-container>-->
-              <!--<label>Label: <md-input-container><input mdInput></md-input-container></label>-->
-            <!--</p>-->
-          <!--</md-card-content>-->
-        <!--</md-card>-->
-
-
-
-
-
-      </div>
-
-
     </div>
 
-
   </md-tab>
+        <!--PARAISKOS BUKLE-->
+
+
+  <script>
+    angular.module('valueExample', [])
+      .controller('ExampleController', ['$scope', function($scope) {
+        $scope.names = ['pizza', 'unicorns', 'robots'];
+        $scope.my = { favorite: 'unicorns' };
+      }]);
+  </script>
+
 
   <md-tab label="Paskolos būklė">
     <div class="page-padding" align="center">
       <div>
         <md-toolbar color="primary" layout-align="center center">
-          <span class="spanCentered">Vartojimo paskolos skaičiuoklė</span>
+          <span class="spanCentered">Pasitikrinti paskolos būseną</span>
         </md-toolbar>
+
+
+        <md-input-container>
+          <input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>
+        </md-input-container>
+
+
+
+        <p *ngFor="let customer of  customers">
+
+
+              <span *ngIf="customer.code == codeI.value">
+                    {{customer.status}}
+              </span>
+              <span *ngIf="customer.code == codeI.value && customer.status == 'Koreguoti'">
+
+                <div class="page-padding" align="center">
+      <div>
+        <div>
+
+          <div>
+            <div class="form-group">
+              <md-input-container>
+                <input type="number"  mdInput placeholder="Paskolos suma*" class="form-control"  value={{customer.loanAmount}} #loanAmount required>
+
+              </md-input-container>
+              <span class="unit">Eur</span>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <span>Paskolos terminas*:</span>
+
+            <md-input-container>
+              <input type="number" mdInput placeholder="Metai" class="form-control"   #loanTermY required>
+            </md-input-container>
+
+            <md-input-container>
+              <input type="number" mdInput placeholder="Mėnesis*" class="form-control"   #loanTermM required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Paskolos ir palūkanų mokėjimo diena*" value={{customer.loanInterestPayDay}} class="form-control"
+                     #loanInterestPayDay required>
+            </md-input-container>
+          </div>
+
+          <div class="form-group" style="padding-top: 3%">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Vardas*" class="form-control" value={{customer.firstName}} #firstName  required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Pavardė" class="form-control" value={{customer.lastName}} #lastName  required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Asmens kodas" class="form-control" value={{customer.personalCode}} #personalCode required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Dokumento tipas" class="form-control" value={{customer.docType}} #docType required>
+            </md-input-container>
+          </div>
+          <div class="form-group" style="padding-bottom: 3%">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Dokumento numeris" class="form-control" value={{customer.docNumber}} #docNumber required>
+            </md-input-container>
+          </div>
+
+          <span class="spacerRight" style="font-weight: 300">Kontaktiniai duomenys: </span>
+
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Šalis*" class="form-control" value={{customer.country}} #country required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Miestas*" class="form-control" value={{customer.city}} #city required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="Adresas*" class="form-control" value={{customer.address}} #adress required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Telefono numeris 1" class="form-control" value={{customer.phoneNumber1}} #phoneNumber1 required>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Telefono numeris 2" class="form-control" value={{customer.phoneNumber2}} #phoneNumber2>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="text" mdInput placeholder="El. paštas" class="form-control" value={{customer.email}} #email>
+            </md-input-container>
+          </div>
+          <div class="form-group">
+            <md-input-container>
+              <input type="number" mdInput placeholder="Mėnesinis atlyginimas atskaičius mokesčius" class="form-control" value={{customer.monthlySalary}}
+                     #monthlySalary required>
+            </md-input-container>
+            <span class="unit">Eur</span>
+          </div>
+
+          <button md-button style="border: double #ff9319" type="submit" class="mat-active"
+                  (click)="addEditUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">
+            Submit
+          </button>
+          <app-dialog [(visible)]="showDialog">
+            <h1 class="mat-dialog-content">
+              Patvirtinimo kodas:
+              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
+              <!--[ngClass]="{first:first,last:last}">-->
+              <!--<div *ngIf="last">{{ customer.code }}</div>-->
+              <!--</tr>-->
+            </h1>
+            <div>{{userCode}}</div>
+        <p class="md-body-2">Sveikiname, jūs sėkmingai patiekėte paskolos paraišką</p>
+        <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite stebėti savo paskolos būseną </p>
+        <button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>
+        </app-dialog>
+        <app-dialog [(visible)]="showDialog2">
+          <h1 class="mat-dialog-content">
+            Patvirtinimo kodas:
+            <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
+            <!--[ngClass]="{first:first,last:last}">-->
+            <!--<div *ngIf="last">{{ customer.code }}</div>-->
+            <!--</tr>-->
+          </h1>
+          <div>{{userCode}}</div>
+          <p class="md-body-2">Jūs išsaugojot savo paraišką, galėsit pateikti ja vėliau</p>
+          <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite tęsti pildyti paraišką </p>
+          <button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
+        </app-dialog>
       </div>
     </div>
+    </div>
 
+
+
+
+          </span>
+        </p>
+
+
+      </div>
+    </div>
   </md-tab>
+
+
   <md-tab label="Admin">
     <div class="page-padding" align="center">
       <div>
@@ -366,15 +409,15 @@
           <span class="spanCentered">Paraiškos pildymas</span>
         </md-toolbar>
         <div>
-          <div >
-            <div >
-              <ng2-md-datatable >
+          <div>
+            <div>
+              <ng2-md-datatable>
                 <ng2-md-datatable-header>
-                  <ng2-md-datatable-column >Article</ng2-md-datatable-column>
-                  <ng2-md-datatable-column >Suma</ng2-md-datatable-column>
-                  <ng2-md-datatable-column >Vartotojas</ng2-md-datatable-column>
-                  <ng2-md-datatable-column >Statusas</ng2-md-datatable-column>
-                  <ng2-md-datatable-column >Data</ng2-md-datatable-column>
+                  <ng2-md-datatable-column>Article</ng2-md-datatable-column>
+                  <ng2-md-datatable-column>Suma</ng2-md-datatable-column>
+                  <ng2-md-datatable-column>Vartotojas</ng2-md-datatable-column>
+                  <ng2-md-datatable-column>Statusas</ng2-md-datatable-column>
+                  <ng2-md-datatable-column>Data</ng2-md-datatable-column>
                 </ng2-md-datatable-header>
                 <tbody>
                 <ng2-md-datatable-row *ngFor="let customer of customers" selectableValue="status">
@@ -391,22 +434,22 @@
 
               <!--!!!!!!!!!!!!!!!!UZKOMENTUOK ng2-md-datatable jei neveikia ir atkomentuok <table>  Veiks su paprasta lentele !!!!!!!!!!!!!!-->
               <!--<table>-->
-                <!--<thead>-->
-                <!--<tr>-->
-                  <!--<th>Suma</th>-->
-                  <!--<th>Vartotojas</th>-->
-                  <!--<th>Statusas</th>-->
-                  <!--<th>Data</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
-                <!--<tbody>-->
-                <!--<tr *ngFor="let customer of customers">-->
-                  <!--<th>{{ customer.loanAmount }}</th>-->
-                  <!--<th>{{ customer.firstName+' '+customer.lastName }}</th>-->
-                  <!--<th>{{customer.status}}</th>-->
-                  <!--<th>{{customer.date}}</th>-->
-                <!--</tr>-->
-                <!--</tbody>-->
+              <!--<thead>-->
+              <!--<tr>-->
+              <!--<th>Suma</th>-->
+              <!--<th>Vartotojas</th>-->
+              <!--<th>Statusas</th>-->
+              <!--<th>Data</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+              <!--<tr *ngFor="let customer of customers">-->
+              <!--<th>{{ customer.loanAmount }}</th>-->
+              <!--<th>{{ customer.firstName+' '+customer.lastName }}</th>-->
+              <!--<th>{{customer.status}}</th>-->
+              <!--<th>{{customer.date}}</th>-->
+              <!--</tr>-->
+              <!--</tbody>-->
               <!--</table>-->
             </div>
           </div>
@@ -417,104 +460,102 @@
   </md-tab>
 
 
-
 </md-tab-group>
 
 <!--<tr *ngFor="let customer of customers;let first=first;let last=last" [ngClass]="{first:first,last:last}">-->
-  <!--<td>{{hero.firstName}}</td>-->
+<!--<td>{{hero.firstName}}</td>-->
 <!--</tr>-->
 
 <!--<h1>Customers:</h1>-->
 <!--<div >-->
-  <!--<div >-->
-    <!--<table >-->
-      <!--<thead>-->
-      <!--<tr>-->
-        <!--<th>#</th>-->
-        <!--<th>customers:</th>-->
-      <!--</tr>-->
-      <!--</thead>-->
-      <!--<tbody>-->
-      <!--<tr *ngFor="let customer of customers">-->
-        <!--<th>{{ customer.id }}</th>-->
-        <!--<th>{{ customer.firstName }}</th>-->
-        <!--<th>{{customer.lastName}}</th>-->
-        <!--<th>{{customer.phoneNumber1}}</th>-->
-        <!--<th>{{customer.phoneNumber2}}</th>-->
-        <!--<th>{{customer.personalCode}}</th>-->
-        <!--<th>{{customer.docType}}</th>-->
-        <!--<th>{{customer.docNumber}}</th>-->
-        <!--<th>{{customer.country}}</th>-->
-        <!--<th>{{customer.city}}</th>-->
-        <!--<th>{{customer.address}}</th>-->
-        <!--<th>{{customer.monthlySalary}}</th>-->
-        <!--<th>{{customer.email}}</th>-->
-      <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
-  <!--</div>-->
+<!--<div >-->
+<!--<table >-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>#</th>-->
+<!--<th>customers:</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr *ngFor="let customer of customers">-->
+<!--<th>{{ customer.id }}</th>-->
+<!--<th>{{ customer.firstName }}</th>-->
+<!--<th>{{customer.lastName}}</th>-->
+<!--<th>{{customer.phoneNumber1}}</th>-->
+<!--<th>{{customer.phoneNumber2}}</th>-->
+<!--<th>{{customer.personalCode}}</th>-->
+<!--<th>{{customer.docType}}</th>-->
+<!--<th>{{customer.docNumber}}</th>-->
+<!--<th>{{customer.country}}</th>-->
+<!--<th>{{customer.city}}</th>-->
+<!--<th>{{customer.address}}</th>-->
+<!--<th>{{customer.monthlySalary}}</th>-->
+<!--<th>{{customer.email}}</th>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
 <!--</div>-->
 
 <!--<md-list *ngFor="let customer of customers">-->
-  <!--<md-list-item> {{customer.id}} </md-list-item>-->
-  <!--<md-list-item> {{customer.firstName}} </md-list-item>-->
-  <!--//<md-list-item> Paprika </md-list-item>-->
+<!--<md-list-item> {{customer.id}} </md-list-item>-->
+<!--<md-list-item> {{customer.firstName}} </md-list-item>-->
+<!--//<md-list-item> Paprika </md-list-item>-->
 <!--</md-list>-->
 
 
-
 <!--<form>-->
-  <!--<div class="form-group">-->
-    <!--<label >first name</label>-->
-    <!--<input type="text" class="form-control" #firstName required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >last name</label>-->
-    <!--<input type="text" class="form-control" #lastName required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >Phone number 1</label>-->
-    <!--<input type="number" class="form-control" #phoneNumber1 required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >Phone number 2</label>-->
-    <!--<input type="number" class="form-control" #phoneNumber2 >-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >personal code</label>-->
-    <!--<input type="number" class="form-control" #personalCode required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >docType</label>-->
-    <!--<input type="text" class="form-control" #docType required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >docNumber</label>-->
-    <!--<input type="number" class="form-control" #docNumber required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >Country</label>-->
-    <!--<input type="text" class="form-control" #country required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >City</label>-->
-    <!--<input type="text" class="form-control" #city required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >address</label>-->
-    <!--<input type="text" class="form-control" #adress required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >monthlySalary</label>-->
-    <!--<input type="number" class="form-control" #monthlySalary required>-->
-  <!--</div>-->
-  <!--<div class="form-group">-->
-    <!--<label >email</label>-->
-    <!--<input type="text" class="form-control" #email >-->
-  <!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >first name</label>-->
+<!--<input type="text" class="form-control" #firstName required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >last name</label>-->
+<!--<input type="text" class="form-control" #lastName required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >Phone number 1</label>-->
+<!--<input type="number" class="form-control" #phoneNumber1 required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >Phone number 2</label>-->
+<!--<input type="number" class="form-control" #phoneNumber2 >-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >personal code</label>-->
+<!--<input type="number" class="form-control" #personalCode required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >docType</label>-->
+<!--<input type="text" class="form-control" #docType required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >docNumber</label>-->
+<!--<input type="number" class="form-control" #docNumber required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >Country</label>-->
+<!--<input type="text" class="form-control" #country required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >City</label>-->
+<!--<input type="text" class="form-control" #city required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >address</label>-->
+<!--<input type="text" class="form-control" #adress required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >monthlySalary</label>-->
+<!--<input type="number" class="form-control" #monthlySalary required>-->
+<!--</div>-->
+<!--<div class="form-group">-->
+<!--<label >email</label>-->
+<!--<input type="text" class="form-control" #email >-->
+<!--</div>-->
 
 
-  <!--<button type="submit" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value)">Submit</button>-->
+<!--<button type="submit" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value)">Submit</button>-->
 
 <!--</form>-->
 
@@ -530,12 +571,12 @@
 <!--</thead>-->
 <!--<tbody>-->
 <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-    <!--[ngClass]="{first:first,last:last}">-->
+<!--[ngClass]="{first:first,last:last}">-->
 <!--<th>{{ customer.loanAmount }}</th>-->
 <!--<th>{{ customer.firstName+' '+customer.lastName }}</th>-->
 <!--<th>{{customer.status}}</th>-->
 <!--<th>{{customer.date}}</th>-->
-  <!--<div *ngIf="last">{{ customer.code }}</div>-->
+<!--<div *ngIf="last">{{ customer.code }}</div>-->
 <!--</tr>-->
 <!--</tbody>-->
 <!--</table>-->

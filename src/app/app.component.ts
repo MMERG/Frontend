@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   error: any;
   customers: any;
   customerCode:any;
+  code:string;
+  status:string;
   showDialog = false;
   showDialog2 = false;
   isValid = false;
@@ -95,6 +97,9 @@ export class AppComponent implements OnInit {
   }
 
 
+
+
+
   addDraft(firstName: string,
            lastName: string,
            phoneNumber1: number,
@@ -152,18 +157,17 @@ export class AppComponent implements OnInit {
       })
   }
 
-
-
-  getCode(id:number){
-    this.formService.getCode(id)
-      .then(customerCode=>{
-        this.customerCode=customerCode;
-        console.log('success');
-      }).catch(error=>{
-        this.error = error;
-        console.log('error');
-    })
+  neededLoanCode : string;
+  buttonClicked : string;
+  getStatus(loan_code: string){
+    this.neededLoanCode = loan_code;
+    this.buttonClicked = "true";
+    console.log(loan_code);
   }
+
+
+
+
 
   count(income: number, loan: number) {
 

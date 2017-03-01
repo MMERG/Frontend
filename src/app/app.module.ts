@@ -14,7 +14,7 @@ import { MdDataTableModule } from 'ng2-md-datatable';
 @NgModule({
   declarations: [
     AppComponent,
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
