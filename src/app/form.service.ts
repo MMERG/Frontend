@@ -15,19 +15,19 @@ export class FormService  {
   }
 
   getCustomers():Promise<any>{
-    return this.http.get("http://localhost:8080/customers")
+    return this.http.get("https://loaning-api.herokuapp.com/customers")
       .toPromise()
       .then(response=>response.json())
       .catch(this.handleError);
   }
   getCustomersDrafts():Promise<any>{
-    return this.http.get("http://localhost:8080/customersDrafts")
+    return this.http.get("https://loaning-api.herokuapp.com/customerDrafts")
       .toPromise()
       .then(response=>response.json())
       .catch(this.handleError);
   }
   getCode(id:number):Promise<any>{
-    return this.http.get("http://localhost:8080/customerCode/{id}")
+    return this.http.get("https://loaning-api.herokuapp.com/customerCode/{id}")
       .toPromise()
       .then(response=>response.text())
       .catch(this.handleError);
@@ -50,7 +50,7 @@ export class FormService  {
                  loanInterestPayDay: number,
   code:string): Promise<any> {
     return this.http
-      .post("http://localhost:8080/customer/add", JSON.stringify({
+      .post("https://loaning-api.herokuapp.com/customer/add", JSON.stringify({
         firstName: firstName,
         lastName: lastName,
         phoneNumber1: phoneNumber1,
@@ -75,7 +75,7 @@ export class FormService  {
 
   updateStatus(id: number, status: string): Promise<any> {
     return this.http
-      .put("http://localhost:8080/loanstatus/update", {id: id, status:status}, {headers: this.headers})
+      .put("https://loaning-api.herokuapp.com/loanstatus/update", {id: id, status:status}, {headers: this.headers})
       .toPromise()
       .then(() => {
         // this.getLoans();
@@ -103,7 +103,7 @@ export class FormService  {
                  loanInterestPayDay: number,
   code:string): Promise<any> {
     return this.http
-      .post("http://localhost:8080/customerDraft/add", JSON.stringify({
+      .post("https://loaning-api.herokuapp.com/customerDraft/add", JSON.stringify({
         firstName: firstName,
         lastName: lastName,
         phoneNumber1: phoneNumber1,
