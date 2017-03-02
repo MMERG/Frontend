@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
   ifalone: boolean = true;
   code:string;
   status:string;
+  loanContractFee = 35;
+  monthlyPayment: number = 0;
+  legalPayment: number = 0;
+  incomeBoth: number = 0;
   message:any="Tokio kodo nėra";
 
 
@@ -228,8 +232,8 @@ export class AppComponent implements OnInit {
 
   calculateMonthlyPayment(lvalue: number, period: number)
   {
-
-    return ((lvalue * (this.annualRate/12))/(1-((1+(this.annualRate/12))**(-1*period))));
+    this.monthlyPayment = ((lvalue * (this.annualRate/12))/(1-((1+(this.annualRate/12))**(-1*period))));
+    return this.monthlyPayment;
 
   }
 
@@ -238,16 +242,57 @@ export class AppComponent implements OnInit {
     return lvalue * this.annualRate/12;
   }
 
-  ifIncomeToLow (income1:number, income2:number){
-        console.log(income1+income2);
-    if (income1+income2>666){
-            this.showDialog = !this.showDialog;
-            console.log(income1+income2);
-          }
+  ifIncomeToLowAlone (income1:number){
+    console.log(income1);
+    this.legalPayment = income1*0.4;
+    console.log(this.legalPayment);
+    console.log(this.monthlyPayment);
+
+
+    if (this.monthlyPayment<this.legalPayment){
+      this.showDialog = !this.showDialog;
+
+      console.log(this.showDialog);
+    }
+
+
     else {
-            this.showDialog3 = !this.showDialog3;
-          }
+
+      this.showDialog3 = true;
+      console.log(this.showDialog3);
+    }
+
   }
+
+  ifIncomeToLowCoDeptor (income1:number, income2:number){
+    console.log(income1);
+    this.incomeBoth = income1 + income2;
+    this.legalPayment = (income1 + income2)*0.4;
+    console.log(this.legalPayment);
+    console.log(this.monthlyPayment);
+
+
+    if (this.monthlyPayment<this.legalPayment && this.incomeBoth > 666){
+      this.showDialog = !this.showDialog;
+
+      console.log(this.showDialog);
+    }
+
+
+    else {
+
+      this.showDialog3 = true;
+      console.log(this.showDialog3);
+    }
+
+  }
+  calculateLoanContractFee (loanValue:number){
+    if(loanValue*0.015>35){
+      this.loanContractFee=loanValue*0.015
+    }
+
+  }
+
 
   getCode(id:number){
     this.formService.getCode(id)

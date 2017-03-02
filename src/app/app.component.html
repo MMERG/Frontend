@@ -18,7 +18,7 @@
         <h2 style="color:sienna">Informacija apie jūsų pageidaujamą paskolą</h2>
         <label style="color: gray">Pageidaujama paskolos suma</label>
 
-        <md-slider [(ngModel)]="loanValue" class="md-slider-horizontal" showTicks="true" max="20000" min="500" step="1"
+        <md-slider [(ngModel)]="loanValue" class="md-slider-horizontal" showTicks="true" max="58000" min="500" step="1"
                    thumbLabel="true" value="500"></md-slider>
 
         <input [(ngModel)]="loanValue" class="digits" #loan>
@@ -27,9 +27,9 @@
         <div align="center">
           <label style="color:sienna">Paskolą imsiu</label>
 
-          <input type="radio" name="alone" [(ngModel)]="ifAlone" checked> Vienas
+          <input type="radio" name="alone1" [(ngModel)]="ifAlone" checked> Vienas
 
-          <input type="radio" name="alone" value="true" [(ngModel)]="ifAlone">Su sutuoktiniu (bendraskoliu)
+          <input type="radio" name="alone1" value="true" [(ngModel)]="ifAlone">Su sutuoktiniu (bendraskoliu)
 
         </div>
 
@@ -38,7 +38,7 @@
       <div>
         <h2 style="color:sienna">Informacija apie jūsų pajamas</h2>
         <label style="color: gray">Jūsų grynosios mėnesio pajamos</label>
-        <md-slider [(ngModel)]="incomeValue" class="md-slider-horizontal" showTicks="true" max="20000" min="245"
+        <md-slider [(ngModel)]="incomeValue" class="md-slider-horizontal" showTicks="true" max="10000" min="245"
                    step="1"
                    thumbLabel="true" value="245"></md-slider>
 
@@ -83,15 +83,28 @@
         {{return}}
       </div>
 
+      <div *ngIf="ifAlone">
+        <button #comp app-calculator md-raised-button style="background: #ff9319"
+                (click)="showValue(loanValue, period); calculateLoanContractFee(loanValue); ifIncomeToLowCoDeptor(incomeValue, deptorsValue) "
+                class="btn">Skaičiuoti
+        </button>
+
+      </div>
+
+      <div *ngIf="ifAlone == null">
+
 
       <button #comp app-calculator md-raised-button style="background: #ff9319"
-              (click)="showDialog = !showDialog; showValue(loanValue, period);"
+              (click)=" showValue(loanValue, period);calculateLoanContractFee(loanValue);ifIncomeToLowAlone(incomeValue)"
               class="btn">Skaičiuoti
       </button>
+      </div>
 
       <app-dialog [(visible)]="showDialog3">
 
         <p class="md-body-2">Deja, atsižvelgdami į bendras Jūsų nurodytas mėnesio pajamas, paskolos suteikti negalime</p>
+        <p class="md-body-2">Bendra mokėtina suma per mėnesi negali būti didesnė nei 40% bendrų grynųjų pajamų</p>
+        <p class="md-body-2">Norint gauti paskolą kartu su bendraskoliu, bendros mėnesinės pajamos negali būti mažesnės nei 666 eurai.</p>
 
       </app-dialog>
 
@@ -109,15 +122,16 @@
 
 
           <div class="container">
+            <p class="md-body-2">Vienkartinis sutarties mokestis: {{loanContractFee|currency:'EUR':true:'1.2-2'}}</p>
             <table class="table">
               <thead class="thead-inverse">
               <tr>
 
                 <th>Mėnesis</th>
                 <th>Likusi suma</th>
-                <th>Mėnesinis mokestis (* įtrauktas 0,70 Eur mėnesinis paslaugų mokestis)</th>
+                <th>Viso mokėtinas mėnesinis mokestis (* įtrauktas 0,70 Eur mėnesinis paslaugų mokestis)</th>
                 <th>Mokėtinos palūkanos</th>
-                <th>Sutarties mokestis</th>
+                <!--<th>Sutarties mokestis</th>-->
 
               </tr>
               </thead>
@@ -139,7 +153,7 @@
                 <td>{{payment.remainingAmount|currency:'EUR':true:'1.2-2'}}</td>
                 <td>{{payment.monthlyPay+0.70|currency:'EUR':true:'1.2-2'}}</td>
                 <td>{{payment.monthlyInt|currency:'EUR':true:'1.2-2'}}</td>
-                <td>{{loanContractFee|currency:'EUR':true:'1.2-2'}}</td>
+                <!--<td>{{loanContractFee|currency:'EUR':true:'1.2-2'}}</td>-->
               </tr>
               </tbody>
             </table>
