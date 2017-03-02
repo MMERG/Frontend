@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   categories: any;
   error: any;
   customers: any;
+  customersDraft:any;
   customerCode:any;
   showDialog = false;
   showDialog2 = false;
@@ -27,7 +28,10 @@ export class AppComponent implements OnInit {
   annualRate: number = 0.16;
   list: Payment[];
   ifalone: boolean = true;
-  
+  code:string;
+  status:string;
+  message:any="Tokio kodo nėra";
+
 
   constructor(private formService: FormService) {
   }
@@ -43,8 +47,19 @@ export class AppComponent implements OnInit {
       console.log('error');
     })
   }
+  getCustomersDraft() {
+    this.formService.getCustomersDrafts()
+      .then(customersDraft => {
+        this.customersDraft = customersDraft;
+        console.log('success');
+      }).catch(error => {
+      this.error = error;
+      console.log('error');
+    })
+  }
   ngOnInit(): void {
     this.getCustomers();
+    this.getCustomersDraft();
     console.log('onInit');
   }
 

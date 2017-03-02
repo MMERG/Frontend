@@ -20,6 +20,12 @@ export class FormService  {
       .then(response=>response.json())
       .catch(this.handleError);
   }
+  getCustomersDrafts():Promise<any>{
+    return this.http.get("http://localhost:8080/customersDrafts")
+      .toPromise()
+      .then(response=>response.json())
+      .catch(this.handleError);
+  }
   getCode(id:number):Promise<any>{
     return this.http.get("http://localhost:8080/customerCode/{id}")
       .toPromise()
