@@ -23,7 +23,10 @@ import { Component, OnInit, Input, Output, OnChanges, EventEmitter, trigger, sta
 export class DialogComponent implements OnInit  {
   @Input() closable = true;
   @Input() visible: boolean;
+
+
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   // isValid = false;
 
   constructor() { }

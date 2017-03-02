@@ -8,7 +8,7 @@
   <md-tab label="Paskolos skaičiuoklė">
 
 
-    <div class="page-padding" align="center" style="height: 50000px">
+    <div class="page-padding" align="center" style="height: 4000px">
       <div>
         <md-toolbar color="primary" layout-align="center center">
           <span class="spanCentered">Vartojimo paskolos skaičiuoklė</span>
@@ -17,7 +17,7 @@
         <h2 style="color:sienna">Informacija apie jūsų pageidaujamą paskolą</h2>
         <label style="color: gray">Pageidaujama paskolos suma</label>
 
-        <md-slider [(ngModel)]="loanValue" class="md-slider-horizontal" showTicks="true" max="20000" min="500" step="1"
+        <md-slider [(ngModel)]="loanValue" class="md-slider-horizontal" showTicks="true" max="58000" min="500" step="1"
                    thumbLabel="true" value="500"></md-slider>
 
         <input [(ngModel)]="loanValue" class="digits" #loan>
@@ -26,9 +26,9 @@
         <div align="center">
           <label style="color:sienna">Paskolą imsiu</label>
 
-          <input type="radio" name="alone" [(ngModel)]="ifAlone" checked> Vienas
+          <input type="radio" name="alone1" [(ngModel)]="ifAlone" checked > Vienas
 
-          <input type="radio" name="alone" value="true" [(ngModel)]="ifAlone">Su sutuoktiniu (bendraskoliu)
+          <input type="radio" name="alone1" value="true" [(ngModel)]="ifAlone" >Su sutuoktiniu (bendraskoliu)
 
         </div>
 
@@ -37,7 +37,7 @@
       <div>
         <h2 style="color:sienna">Informacija apie jūsų pajamas</h2>
         <label style="color: gray">Jūsų grynosios mėnesio pajamos</label>
-        <md-slider [(ngModel)]="incomeValue" class="md-slider-horizontal" showTicks="true" max="20000" min="245"
+        <md-slider [(ngModel)]="incomeValue" class="md-slider-horizontal" showTicks="true" max="10000" min="245"
                    step="1"
                    thumbLabel="true" value="245"></md-slider>
 
@@ -83,68 +83,84 @@
       </div>
 
 
+      <!--<button #comp app-calculator md-raised-button style="background: #ff9319"-->
+              <!--(click)="showDialog = !showDialog; showValue(loanValue, period); calculateLoanContractFee(loanValue)"-->
+              <!--class="btn">Skaičiuoti-->
+      <!--</button> -->
+
+      <div *ngIf="ifAlone">
+        <button #comp app-calculator md-raised-button style="background: #ff9319"
+                (click)="showValue(loanValue, period); calculateLoanContractFee(loanValue); ifIncomeToLowCoDeptor(incomeValue, deptorsValue) "
+                class="btn">Skaičiuoti
+        </button>
+
+      </div>
+
+      <div *ngIf="ifAlone == null">
       <button #comp app-calculator md-raised-button style="background: #ff9319"
-              (click)="showDialog = !showDialog; showValue(loanValue, period);"
+              (click)="showValue(loanValue, period); calculateLoanContractFee(loanValue); ifIncomeToLowAlone(incomeValue)"
               class="btn">Skaičiuoti
       </button>
+      </div>
+
 
       <app-dialog [(visible)]="showDialog3">
 
         <p class="md-body-2">Deja, atsižvelgdami į bendras Jūsų nurodytas mėnesio pajamas, paskolos suteikti negalime</p>
+        <p class="md-body-2">Bendra mokėtina suma per mėnesi negali būti didesnė nei 40% bendrų grynųjų pajamų</p>
+        <p class="md-body-2">Norint gauti paskolą kartu su bendraskoliu, bendros mėnesinės pajamos negali būti mažesnės nei 666 eurai.</p>
+
+
 
       </app-dialog>
 
+
+
+
       <app-dialog [(visible)]="showDialog">
 
-
-
-
         <h1>Paskolos mokėjimo grafikas</h1>
-
-
-
 
         <div *ngIf="showDialog" style="padding-bottom: 3%">
 
 
           <div class="container">
+            <p class="md-body-2">Vienkartinis sutarties mokestis: {{loanContractFee|currency:'EUR':true:'1.2-2'}}</p>
             <table class="table">
               <thead class="thead-inverse">
+
               <tr>
 
                 <th>Mėnesis</th>
                 <th>Likusi suma</th>
-                <th>Mėnesinis mokestis (* įtrauktas 0,70 Eur mėnesinis paslaugų mokestis)</th>
+                <th>Viso mokėtinas mėnesinis mokestis (*įtrauktas 0,70 Eur mėnesinis paslaugų mokestis)</th>
                 <th>Mokėtinos palūkanos</th>
-                <th>Sutarties mokestis</th>
+                <!--<th>Sutarties mokestis</th>-->
 
               </tr>
               </thead>
               <tbody align="center" style="">
 
-              <!--<tr>-->
-                <!--<td> </td>-->
-                <!--<td> </td>-->
-                <!--<td> </td>-->
-                <!--<td> </td>-->
-                <!--<td>{{payment.contractFee|currency:'EUR':true:'1.2-2'}}</td>-->
-              <!--</tr>-->
-
 
               <tr *ngFor="let payment of list"
-              [class.selected]="payment === selectedPayment">
+                  [class.selected]="payment === selectedPayment">
 
                 <td>{{payment.monthNumber}}</td>
                 <td>{{payment.remainingAmount|currency:'EUR':true:'1.2-2'}}</td>
                 <td>{{payment.monthlyPay+0.70|currency:'EUR':true:'1.2-2'}}</td>
                 <td>{{payment.monthlyInt|currency:'EUR':true:'1.2-2'}}</td>
-                <td>{{loanContractFee|currency:'EUR':true:'1.2-2'}}</td>
+                <!--<td>{{loanContractFee|currency:'EUR':true:'1.2-2'}}</td>-->
               </tr>
               </tbody>
             </table>
           </div>
 
         </div>
+
+
+
+
+
 
 
         <button md-raised-button style="background: #ff9319" (click)="showDialog = !showDialog" class="btn">Close
@@ -715,6 +731,13 @@
           </button>
 
         </div>
+
+        <A HREF="javascript:history.go(0)"></A>
+
+
+        <FORM>
+          <INPUT TYPE="button" onClick="history.go(0)" VALUE="Refresh">
+        </FORM>
 
 
         <!--<md-card class="demo-card demo-basic">-->
