@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService} from "./form.service";
 import {Md5} from 'ts-md5/dist/md5';
+import {Payment} from "./payment";
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,19 @@ export class AppComponent implements OnInit {
   customerCode:any;
   showDialog = false;
   showDialog2 = false;
+  showDialog3 = false;
   isValid = false;
   userCode: any="";
   result1 = 0;
   result2 = 0;
+  loanValue: number = 500;
+  incomeValue: number = 245;
+  deptorsValue: number = 245;
+  period: number = 6;
+  annualRate: number = 0.16;
+  list: Payment[];
+  ifalone: boolean = true;
+  
 
   constructor(private formService: FormService) {
   }
@@ -35,6 +45,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCustomers();
+    console.log('onInit');
   }
 
   addUser(firstName: string,
@@ -93,7 +104,17 @@ export class AppComponent implements OnInit {
         this.customers.push(customer)
       })
   }
-
+  updateStatus(id : number, status: string) {
+    //this.loans[55].status = "Laura";
+    //var filteredGoal = _.where(this.loans, {id: id});
+    id = id;
+    status = status.trim();
+    //if (!name){return;}
+    this.formService.updateStatus(id, status).then(msg => {
+      // this.loans.push(msg);
+      this.getCustomers();
+    })
+  }
 
   addDraft(firstName: string,
            lastName: string,
@@ -152,7 +173,64 @@ export class AppComponent implements OnInit {
       })
   }
 
+  showValue(loanValue: number, period: number) {
 
+
+    this.list = [];
+
+    let r = this.annualRate / 12;
+    let monthlyPayment = 0;
+    let monthlyInterest = 0;
+    let leftValue = this.loanValue;
+
+          monthlyPayment = this.calculateMonthlyPayment(loanValue, this.period);
+    for (let i: number = 1; i <= this.period; i++)
+
+            {
+
+
+              monthlyInterest = this.calculateMonthlyInterest(leftValue);
+
+            this.list.push(new Payment(i, leftValue, monthlyPayment, monthlyInterest, 0.70));
+          leftValue = leftValue - (monthlyPayment - monthlyInterest);
+
+
+            }
+        console.log(this.list);
+        //return this.list;
+        }
+  changeMerriedStateToAlone()
+  {
+    this.ifalone = true;
+  }
+
+  changeMerriedStateToMerried()
+  {
+    this.ifalone = false;
+  }
+
+  calculateMonthlyPayment(lvalue: number, period: number)
+  {
+
+    return ((lvalue * (this.annualRate/12))/(1-((1+(this.annualRate/12))**(-1*period))));
+
+  }
+
+  calculateMonthlyInterest(lvalue: number)
+  {
+    return lvalue * this.annualRate/12;
+  }
+
+  ifIncomeToLow (income1:number, income2:number){
+        console.log(income1+income2);
+    if (income1+income2>666){
+            this.showDialog = !this.showDialog;
+            console.log(income1+income2);
+          }
+    else {
+            this.showDialog3 = !this.showDialog3;
+          }
+  }
 
   getCode(id:number){
     this.formService.getCode(id)

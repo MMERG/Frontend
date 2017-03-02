@@ -66,6 +66,20 @@ export class FormService  {
       .then(res => res.json().data)
       .catch(this.handleError);
   }
+
+  updateStatus(id: number, status: string): Promise<any> {
+    return this.http
+      .put("http://localhost:8080/loanstatus/update", {id: id, status:status}, {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        // this.getLoans();
+      });
+    // .then(res => res.json().data)
+    // .catch(this.handleError);
+  }
+
+
+
   createCustomerDraft(firstName: string,
                  lastName: string,
                  phoneNumber1: number,
