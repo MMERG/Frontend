@@ -116,7 +116,8 @@ export class AppComponent implements OnInit {
       loanInterestPayDay,
     <string>code)
       .then(customer => {
-        this.customers.push(customer)
+        this.customers.push(customer);
+        this.getCustomers();
       })
   }
   updateStatus(id : number, status: string) {
@@ -184,7 +185,8 @@ export class AppComponent implements OnInit {
       loanInterestPayDay,
       <string>code)
       .then(customerDraft => {
-        this.customers.push(customerDraft)
+        this.customers.push(customerDraft);
+        this.getCustomersDraft();
       })
   }
 

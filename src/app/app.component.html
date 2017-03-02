@@ -876,35 +876,28 @@
             <span class="unit">Eur</span>
           </div>
 
-          <button md-raised-button type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2">Save Form</button>
-          <button md-button style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">Submit</button>
+          <button #comp md-raised-button style="background: #ff9319" type="submit" formnovalidate (click)="addDraft(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2">Save Form</button>
+          <button #comp md-raised-button style="background: #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">Submit</button>
           <app-dialog [(visible)]="showDialog">
-            <h1 class="mat-dialog-content">
-              Patvirtinimo kodas:
-              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-                  <!--[ngClass]="{first:first,last:last}">-->
-                <!--<div *ngIf="last">{{ customer.code }}</div>-->
-              <!--</tr>-->
-            </h1>
+            <md-toolbar color="primary" layout-align="center center">
+              <span class="spanCentered">Patvirtinimo kodas</span>
+            </md-toolbar>
             <div>{{userCode}}</div>
             <p class="md-body-2">Sveikiname, jūs sėkmingai patiekėte paskolos paraišką</p>
             <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite stebėti savo paskolos būseną </p>
-            <button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>
+            <button #comp md-raised-button style="background: #ff9319" (click)="showDialog = !showDialog" class="btn" >Grįžti</button>
           </app-dialog>
           <app-dialog [(visible)]="showDialog2">
-            <h1 class="mat-dialog-content">
-              Patvirtinimo kodas:
-              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-              <!--[ngClass]="{first:first,last:last}">-->
-              <!--<div *ngIf="last">{{ customer.code }}</div>-->
-              <!--</tr>-->
-            </h1>
+            <md-toolbar color="primary" layout-align="center center">
+              <span class="spanCentered">Patvirtinimo kodas</span>
+            </md-toolbar>
             <div>{{userCode}}</div>
             <p class="md-body-2">Jūs išsaugojot savo paraišką, galėsit pateikti ja vėliau</p>
             <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite tęsti pildyti paraišką </p>
-            <button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
+            <button #comp md-raised-button style="background: #ff9319" (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
           </app-dialog>
       </form>
+        <A HREF="javascript:history.go(0)"></A>
 
 
 
@@ -1040,236 +1033,46 @@
         $scope.my = { favorite: 'unicorns' };
       }]);
   </script>
-  <!--<md-tab label="Paskolos būklė">-->
-    <!--<div class="page-padding" align="center" style="height: 50000px">-->
-      <!--<div>-->
-        <!--<md-toolbar color="primary" layout-align="center center">-->
-          <!--<span class="spanCentered">Pasitikrinti paskolos būseną</span>-->
-        <!--</md-toolbar>-->
-        <!--<md-input-container>-->
-          <!--<input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>-->
-        <!--</md-input-container>-->
-        <!--<p *ngFor="let customer of  customers">-->
-              <!--<span *ngIf="customer.code == codeI.value">-->
-                    <!--{{customer.status}}-->
-              <!--</span>-->
-        <!--</p>-->
 
 
-
-        <!--<button md-button type="submit" (click)="showDialog=!showDialog">Patikrinti statusa</button>-->
-        <!--<button md-button type="submit" (click)="showDialog=!showDialog">Užbaigti pildyti paraišką</button>-->
-
-        <!--<md-input-container>-->
-          <!--<input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>-->
-        <!--</md-input-container>-->
-
-
-
-        <!--<p *ngFor="let customer of  customers">-->
-
-
-              <!--<span *ngIf="customer.code == codeI.value">-->
-                    <!--{{customer.status}}-->
-              <!--</span>-->
-        <!--</p>-->
-
-
-        <!--<app-dialog [(visible)]="showDialog">-->
-          <!--<h1 class="mat-dialog-content">-->
-            <!--Įveskite patvirtinimo kodą-->
-          <!--</h1>-->
-          <!--<md-input-container>-->
-            <!--<input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>-->
-          <!--</md-input-container>-->
-          <!--<p *ngFor="let customer of  customers">-->
-              <!--<span *ngIf="customer.code == codeI.value">-->
-                    <!--{{customer.status}}-->
-              <!--</span>-->
-          <!--</p>-->
-
-
-
-          <!--<button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>-->
-        <!--</app-dialog>-->
-
-
-        <!--<app-dialog [(visible)]="showDialog2">-->
-          <!--<h1 class="mat-dialog-content">-->
-            <!--Įveskite patvirtinimo kodą-->
-          <!--</h1>-->
-          <!--<md-input-container>-->
-            <!--<input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>-->
-          <!--</md-input-container>-->
-          <!--<p *ngFor="let customer of  customersDraft">-->
-              <!--<span *ngIf="customer.code == codeI.value">-->
-                    <!--aa{{customer.status}}-->
-              <!--</span>-->
-            <!--<span *ngIf="customer.code == codeI.value && customer.status == 'Koreguoti'">-->
-
-                <!--<div class="page-padding" align="center">-->
-      <!--<div>-->
-        <!--<div>-->
-
-          <!--<div>-->
-            <!--<div class="form-group">-->
-              <!--<md-input-container>-->
-                <!--<input type="number"  mdInput placeholder="Paskolos suma*" class="form-control"  value={{customer.loanAmount}} #loanAmount required>-->
-
-              <!--</md-input-container>-->
-              <!--<span class="unit">Eur</span>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-
-            <!--<span>Paskolos terminas*:</span>-->
-
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Metai" class="form-control"   #loanTermY required>-->
-            <!--</md-input-container>-->
-
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Mėnesis*" class="form-control"   #loanTermM required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Paskolos ir palūkanų mokėjimo diena*" value={{customer.loanInterestPayDay}} class="form-control"-->
-                     <!--#loanInterestPayDay required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-
-          <!--<div class="form-group" style="padding-top: 3%">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Vardas*" class="form-control" value={{customer.firstName}} #firstName  required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Pavardė" class="form-control" value={{customer.lastName}} #lastName  required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Asmens kodas" class="form-control" value={{customer.personalCode}} #personalCode required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Dokumento tipas" class="form-control" value={{customer.docType}} #docType required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group" style="padding-bottom: 3%">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Dokumento numeris" class="form-control" value={{customer.docNumber}} #docNumber required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-
-          <!--<span class="spacerRight" style="font-weight: 300">Kontaktiniai duomenys: </span>-->
-
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Šalis*" class="form-control" value={{customer.country}} #country required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Miestas*" class="form-control" value={{customer.city}} #city required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="Adresas*" class="form-control" value={{customer.address}} #adress required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Telefono numeris 1" class="form-control" value={{customer.phoneNumber1}} #phoneNumber1 required>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Telefono numeris 2" class="form-control" value={{customer.phoneNumber2}} #phoneNumber2>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="text" mdInput placeholder="El. paštas" class="form-control" value={{customer.email}} #email>-->
-            <!--</md-input-container>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<md-input-container>-->
-              <!--<input type="number" mdInput placeholder="Mėnesinis atlyginimas atskaičius mokesčius" class="form-control" value={{customer.monthlySalary}}-->
-                     <!--#monthlySalary required>-->
-            <!--</md-input-container>-->
-            <!--<span class="unit">Eur</span>-->
-          <!--</div>-->
-
-          <!--<button md-button style="border: double #ff9319" type="submit" class="mat-active"-->
-                  <!--(click)="addEditUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog2 = !showDialog2;showDialog3=!showDialog3">-->
-            <!--Submit-->
-          <!--</button>-->
-          <!--<app-dialog [(visible)]="showDialog3">-->
-            <!--<h1 class="mat-dialog-content">-->
-              <!--Patvirtinimo kodas:-->
-              <!--&lt;!&ndash;<tr *ngFor="let customer of customers; let first=first;let last=last"&ndash;&gt;-->
-              <!--&lt;!&ndash;[ngClass]="{first:first,last:last}">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div *ngIf="last">{{ customer.code }}</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-            <!--</h1>-->
-            <!--<div>{{userCode}}</div>-->
-          <!--<p class="md-body-2">Sveikiname, jūs sėkmingai patiekėte paskolos paraišką</p>-->
-          <!--<p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite stebėti savo paskolos būseną </p>-->
-          <!--<button md-button (click)="showDialog3 = !showDialog3" class="btn">Grįžti</button>-->
-        <!--</app-dialog>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</span>-->
-          <!--</p>-->
-          <!--<button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>-->
-        <!--</app-dialog>-->
-
-    <!--</div>-->
-    <!--</div>-->
-  <!--</md-tab>-->
 
   <md-tab label="Paskolos būklė">
-    <div class="page-padding" align="center" style="height: 50000px">
+    <div class="page-padding" align="center">
       <div>
         <md-toolbar color="primary" layout-align="center center">
           <span class="spanCentered">Pasitikrinti paskolos būseną</span>
         </md-toolbar>
 
 
+        <md-input-container>
+          <input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeII required>
+        </md-input-container>
+
+
+
+        <p *ngFor="let customer2 of  customers">
+
+
+              <span *ngIf="customer2.code == codeII.value">
+                    {{customer2.status}}
+              </span>
+        </p>
+
+
+    </div>
+    </div>
+  </md-tab>
+
+  <md-tab label="Baigti pildyti">
+    <div class="page-padding" align="center">
+      <div>
+        <md-toolbar color="primary" layout-align="center center">
+          <span class="spanCentered">Baigti pildyti paraišką</span>
+        </md-toolbar>
 
         <md-input-container>
           <input type="text" mdInput placeholder="Patvirtinimo kodas" class="form-control" #codeI required>
         </md-input-container>
-        <div>
-          <button md-button type="submit" (click)="showDialog=!showDialog">Patikrinti statusa</button>
-          <button md-button type="submit" (click)="showDialog2=!showDialog2">Baigti pildyti paraišką</button>
-        </div>
-
-        <app-dialog [(visible)]="showDialog">
-          <md-toolbar color="primary" layout-align="center center">
-            <span class="spanCentered">Statusas</span>
-          </md-toolbar>
-          <p *ngFor="let customer of  customers">
-              <span *ngIf="customer.code == codeI.value">
-                    {{customer.status}}
-              </span>
-          </p>
-
-
-
-          <button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>
-        </app-dialog>
-
-        <app-dialog [(visible)]="showDialog2">
-          <md-toolbar color="primary" layout-align="center center">
-            <span class="spanCentered">Pildyti paraišką</span>
-          </md-toolbar>
         <p *ngFor="let customer of  customersDraft">
           <span *ngIf="customer.code == codeI.value && customer.status == 'Nepateikta'">
 
@@ -1371,36 +1174,17 @@
             <span class="unit">Eur</span>
           </div>
 
-          <button md-button style="border: double #ff9319" type="submit" class="mat-active"
-                  (click)="addEditUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">
-            Submit
-          </button>
+          <button #comp md-raised-button style="background: #ff9319" style="border: double #ff9319" type="submit" class="mat-active" (click)="addUser(firstName.value,lastName.value,phoneNumber1.value,phoneNumber2.value,personalCode.value,docType.value,docNumber.value,country.value,city.value,adress.value,monthlySalary.value,email.value,loanAmount.value,(loanTermM.valueAsNumber + loanTermY.valueAsNumber*12),loanInterestPayDay.value);showDialog = !showDialog">Submit</button>
           <app-dialog [(visible)]="showDialog">
-            <h1 class="mat-dialog-content">
-              Patvirtinimo kodas:
-              <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-              <!--[ngClass]="{first:first,last:last}">-->
-              <!--<div *ngIf="last">{{ customer.code }}</div>-->
-              <!--</tr>-->
-            </h1>
+            <md-toolbar color="primary" layout-align="center center">
+          <span class="spanCentered">Patvirtinimo kodas</span>
+        </md-toolbar>
             <div>{{userCode}}</div>
         <p class="md-body-2">Sveikiname, jūs sėkmingai patiekėte paskolos paraišką</p>
         <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite stebėti savo paskolos būseną </p>
-        <button md-button (click)="showDialog = !showDialog" class="btn">Grįžti</button>
+        <button #comp md-raised-button style="background: #ff9319" (click)="showDialog = !showDialog;getCustomers()" class="btn">Grįžti</button>
         </app-dialog>
-        <app-dialog [(visible)]="showDialog2">
-          <h1 class="mat-dialog-content">
-            Patvirtinimo kodas:
-            <!--<tr *ngFor="let customer of customers; let first=first;let last=last"-->
-            <!--[ngClass]="{first:first,last:last}">-->
-            <!--<div *ngIf="last">{{ customer.code }}</div>-->
-            <!--</tr>-->
-          </h1>
-          <div>{{userCode}}</div>
-          <p class="md-body-2">Jūs išsaugojot savo paraišką, galėsit pateikti ja vėliau</p>
-          <p class="md-body-1">Nusikopijuokite patvirtinimo kodą, su juo galėsite tęsti pildyti paraišką </p>
-          <button md-button (click)="showDialog2 = !showDialog2" class="btn">Grįžti</button>
-        </app-dialog>
+
       </div>
     </div>
     </div>
@@ -1410,7 +1194,6 @@
 
     </span>
     </p>
-    </app-dialog>
 
 
     </div>
