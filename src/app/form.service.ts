@@ -4,6 +4,7 @@ import {toPromise} from "rxjs/operator/toPromise";
 import 'rxjs/add/operator/toPromise';
 import {Data} from "@angular/router";
 import {AppComponent} from "./app.component"
+import {Md5} from 'ts-md5/dist/md5';
 
 @Injectable()
 export class FormService  {
@@ -17,6 +18,18 @@ export class FormService  {
     return this.http.get("http://localhost:8080/customers")
       .toPromise()
       .then(response=>response.json())
+      .catch(this.handleError);
+  }
+  getCustomersDrafts():Promise<any>{
+    return this.http.get("http://localhost:8080/customersDrafts")
+      .toPromise()
+      .then(response=>response.json())
+      .catch(this.handleError);
+  }
+  getCode(id:number):Promise<any>{
+    return this.http.get("http://localhost:8080/customerCode/{id}")
+      .toPromise()
+      .then(response=>response.text())
       .catch(this.handleError);
   }
 
@@ -34,7 +47,8 @@ export class FormService  {
                  email:string,
                  loanAmount:number,
                  loanTerm:number,
-                 loanInterestPayDay: number): Promise<any> {
+                 loanInterestPayDay: number,
+  code:string): Promise<any> {
     return this.http
       .post("http://localhost:8080/customer/add", JSON.stringify({
         firstName: firstName,
@@ -51,12 +65,27 @@ export class FormService  {
         email: email,
         loanAmount:loanAmount,
         loanTerm:loanTerm,
-        loanInterestPayDay:loanInterestPayDay
+        loanInterestPayDay:loanInterestPayDay,
+        code:code
       }), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
   }
+
+  updateStatus(id: number, status: string): Promise<any> {
+    return this.http
+      .put("http://localhost:8080/loanstatus/update", {id: id, status:status}, {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        // this.getLoans();
+      });
+    // .then(res => res.json().data)
+    // .catch(this.handleError);
+  }
+
+
+
   createCustomerDraft(firstName: string,
                  lastName: string,
                  phoneNumber1: number,
@@ -71,7 +100,8 @@ export class FormService  {
                  email:string,
                  loanAmount:number,
                  loanTerm:number,
-                 loanInterestPayDay: number): Promise<any> {
+                 loanInterestPayDay: number,
+  code:string): Promise<any> {
     return this.http
       .post("http://localhost:8080/customerDraft/add", JSON.stringify({
         firstName: firstName,
@@ -88,7 +118,8 @@ export class FormService  {
         email: email,
         loanAmount:loanAmount,
         loanTerm:loanTerm,
-        loanInterestPayDay:loanInterestPayDay
+        loanInterestPayDay:loanInterestPayDay,
+        code:code
       }), {headers: this.headers})
       .toPromise()
       .then(ress => ress.json().data)

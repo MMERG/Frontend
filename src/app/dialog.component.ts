@@ -2,7 +2,7 @@
  * Created by Marius on 2017.02.27.
  */
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter, trigger, state, style, animate, transition } from '@angular/core';
-
+// import {FormService} from "./form.service";
 @Component({
   selector: 'app-dialog',
   templateUrl: 'dialog.component.html',
@@ -25,13 +25,26 @@ export class DialogComponent implements OnInit  {
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {
+  }
 
-ngOnInit(){}
 
+  ngOnInit(){}
+  // getCustomers() {
+  //   this.formService.getCustomers()
+  //     .then(customers => {
+  //       this.customers = customers;
+  //       console.log('success');
+  //     }).catch(error => {
+  //     this.error = error;
+  //     console.log('error');
+  //   })
+  // }
+  // ngOnInit(): void {
+  //   this.getCustomers();
+  // }
 close(){
   this.visible = false;
   this.visibleChange.emit(this.visible);
 }
-
 }
